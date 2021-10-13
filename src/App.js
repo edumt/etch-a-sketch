@@ -8,7 +8,7 @@ const SketchPad = styled.div`
   flex-wrap: wrap;
 `;
 
-const Asdf = styled.div`
+const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -16,20 +16,26 @@ const Asdf = styled.div`
 `;
 
 const Pixel = styled.div`
-  height: 64px;
-  width: 64px;
-  background-color: red;
+  height: ${(props) => (props.size ? props.size + "px" : "64px")};
+  width: ${(props) => (props.size ? props.size + "px" : "64px")};
+  background-color: grey;
+
+  &:hover {
+    background-color: black;
+  }
 `;
 
-const createGrid = (size) => {
-  return [...Array(size)].map((_, index) => <Pixel key={index} />);
+const createGrid = (resolution) => {
+  return [...Array(resolution * resolution)].map((_, index) => (
+    <Pixel key={index} size={640 / resolution} />
+  ));
 };
 
 function App() {
   return (
-    <Asdf>
+    <Wrapper>
       <SketchPad>{createGrid(100)}</SketchPad>
-    </Asdf>
+    </Wrapper>
   );
 }
 
