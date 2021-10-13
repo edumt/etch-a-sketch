@@ -22,17 +22,13 @@ const Pixel = styled.div`
 `;
 
 const createGrid = (size) => {
-  return [...Array(size - 1)].map((_, index) => <Pixel key={index} />);
+  return [...Array(size)].map((_, index) => <Pixel key={index} />);
 };
 
 function App() {
-  //const arr = new Array(10);
   return (
     <Asdf>
-      <SketchPad>
-        <Pixel />
-        {createGrid(100)}
-      </SketchPad>
+      <SketchPad>{createGrid(100)}</SketchPad>
     </Asdf>
   );
 }
