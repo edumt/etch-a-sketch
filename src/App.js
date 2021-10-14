@@ -15,7 +15,7 @@ function App() {
   return (
     <Wrapper>
       {/* <SketchPadOptions /> */}
-      <SketchPad size={600} resolution={16} />
+      <SketchPad size={600} resolution={8} />
     </Wrapper>
   );
 }

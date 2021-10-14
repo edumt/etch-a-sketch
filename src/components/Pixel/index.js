@@ -1,17 +1,28 @@
-import styled from "styled-components";
+import { useState } from "react";
+import * as S from "./styled";
 
-const Pixel = styled.div`
-  height: ${(props) => (props.size ? props.size + "px" : "10px")};
-  width: ${(props) => (props.size ? props.size + "px" : "10px")};
-  box-sizing: border-box;
-  border: ${(props) => (props.size ? props.size * 0.1 + "px" : "1px")} solid
-    transparent;
+const Pixel = ({ size }) => {
+  const [color, setColor] = useState("#FFFFFF");
 
-  &:hover {
-    background-color: grey;
-    border: ${(props) => (props.size ? props.size * 0.1 + "px" : "1px")} solid
-      black;
-  }
-`;
+  const randomColor = () =>
+    "#" + Math.floor(Math.random() * 16777215).toString(16);
+  const handleHover = () => {
+    console.log(MouseEvent.buttons);
+    setColor(randomColor());
+  };
+
+  const preventDragHandler = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <S.Pixel
+      size={size}
+      color={color}
+      onMouseOver={handleHover}
+      onDragStart={preventDragHandler}
+    />
+  );
+};
 
 export default Pixel;
