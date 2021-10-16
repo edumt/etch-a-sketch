@@ -1,9 +1,10 @@
 //todo: implement slider to change resolution, maybe one to change size too
-import { Center, Button, Slider } from "@mantine/core";
+import { Center, Button, Slider, ColorPicker } from "@mantine/core";
 
 const SketchPadOptions = () => {
   return (
     <Center style={{ flexDirection: "column", width: 250 }}>
+      <ColorPicker />
       <Button>Picked Color</Button>
       <Button>Eraser</Button>
       <Button>Rainbow Mode</Button>
