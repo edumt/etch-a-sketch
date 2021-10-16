@@ -4,29 +4,19 @@ import { Center, Button, Slider, ColorPicker } from "@mantine/core";
 const SketchPadOptions = () => {
   return (
     <Center style={{ flexDirection: "column", width: 250 }}>
-      <ColorPicker />
-      <Button>Picked Color</Button>
-      <Button>Eraser</Button>
-      <Button>Rainbow Mode</Button>
-      <Button>Tint</Button>
-      <Button>Shade</Button>
-      <Button>Toggle Grid Lines</Button>
-      {/* <Slider
-        defaultValue={16}
-        min={4}
-        max={100}
+      <Slider
+        style={{ width: "90%", height: 30 }}
+        defaultValue={32}
+        min={8}
+        max={64}
         step={1}
         label={(value) => value}
         labelAlwaysOn
-      /> */}
-      <Slider
-        style={{ width: "90%", height: 30 }}
-        marks={[
-          { value: 20, label: "20%" },
-          { value: 50, label: "50%" },
-          { value: 80, label: "80%" },
-        ]}
       />
+      <ColorPicker />
+      <Button>Background Color</Button>
+      <Button>Clear SketchPad {/* maybe use an icon instead */}</Button>
+      <Button>Toggle Grid Lines</Button>
     </Center>
   );
 };

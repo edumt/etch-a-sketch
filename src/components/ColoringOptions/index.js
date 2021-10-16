@@ -1,5 +1,5 @@
 //todo: implement slider to change resolution, maybe one to change size too
-import { Center, Button, Slider, ColorPicker } from "@mantine/core";
+import { Center, Button, ColorPicker } from "@mantine/core";
 
 const ColoringOptions = () => {
   return (
@@ -10,23 +10,6 @@ const ColoringOptions = () => {
       <Button>Rainbow Mode</Button>
       <Button>Tint</Button>
       <Button>Shade</Button>
-      <Button>Toggle Grid Lines</Button>
-      {/* <Slider
-        defaultValue={16}
-        min={4}
-        max={100}
-        step={1}
-        label={(value) => value}
-        labelAlwaysOn
-      /> */}
-      <Slider
-        style={{ width: "90%", height: 30 }}
-        marks={[
-          { value: 20, label: "20%" },
-          { value: 50, label: "50%" },
-          { value: 80, label: "80%" },
-        ]}
-      />
     </Center>
   );
 };
