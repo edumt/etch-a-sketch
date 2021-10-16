@@ -1,6 +1,7 @@
 //import { useState } from "react";
 import styled from "styled-components";
 import SketchPad from "./components/SketchPad";
+import ColoringOptions from "./components/ColoringOptions";
 import SketchPadOptions from "./components/SketchPadOptions";
 
 const Wrapper = styled.div`
@@ -13,8 +14,9 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Wrapper>
-      <SketchPadOptions />
+      <ColoringOptions />
       <SketchPad size={600} resolution={16} />
+      <SketchPadOptions />
     </Wrapper>
   );
 }
