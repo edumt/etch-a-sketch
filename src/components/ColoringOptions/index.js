@@ -1,15 +1,15 @@
-//todo: implement slider to change resolution, maybe one to change size too
-import { Center, Button, ColorPicker } from "@mantine/core";
+import { Center, ColorPicker } from "@mantine/core";
+import ColoringOption from "../ColoringOption";
 
 const ColoringOptions = () => {
   return (
     <Center style={{ flexDirection: "column", width: 250 }}>
       <ColorPicker />
-      <Button>Picked Color</Button>
-      <Button>Eraser</Button>
-      <Button>Rainbow Mode</Button>
-      <Button>Tint</Button>
-      <Button>Shade</Button>
+      <ColoringOption>Picked Color</ColoringOption>
+      <ColoringOption>Eraser</ColoringOption>
+      <ColoringOption>Rainbow Mode</ColoringOption>
+      <ColoringOption>Tint</ColoringOption>
+      <ColoringOption>Shade</ColoringOption>
     </Center>
   );
 };

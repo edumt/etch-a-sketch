@@ -1,5 +1,6 @@
 //todo: implement slider to change resolution, maybe one to change size too
-import { Center, Button, Slider, ColorPicker } from "@mantine/core";
+import { Center, Slider, ColorPicker } from "@mantine/core";
+import SketchPadOption from "../SketchPadOption";
 
 const SketchPadOptions = () => {
   return (
@@ -14,9 +15,11 @@ const SketchPadOptions = () => {
         labelAlwaysOn
       />
       <ColorPicker />
-      <Button>Background Color</Button>
-      <Button>Clear SketchPad {/* maybe use an icon instead */}</Button>
-      <Button>Toggle Grid Lines</Button>
+      <SketchPadOption>Background Color</SketchPadOption>
+      <SketchPadOption>
+        Clear SketchPad {/* maybe use an icon instead */}
+      </SketchPadOption>
+      <SketchPadOption>Toggle Grid Lines</SketchPadOption>
     </Center>
   );
 };
