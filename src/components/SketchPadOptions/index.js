@@ -1,25 +1,48 @@
-//todo: implement slider to change resolution, maybe one to change size too
-import { Center, Slider, ColorPicker } from "@mantine/core";
-import SketchPadOption from "../SketchPadOption";
+import { useState } from "react";
+import { Center, Slider, ColorInput } from "@mantine/core";
+import SketchPadOption from "./SketchPadOption";
 
 const SketchPadOptions = () => {
+  const marks = [
+    { value: 8, label: 8 },
+    { value: 64, label: 64 },
+  ];
+
+  let showingGrid = false;
+
   return (
-    <Center style={{ flexDirection: "column", width: 250 }}>
+    <Center style={{ flexDirection: "column-reverse", width: 250 }}>
+      <ColorInput value={"#FFFFFF"} />
+      <SketchPadOption
+        handleClick={() =>
+          console.log("background color changed (not implemented)")
+        }
+      >
+        Background Color
+      </SketchPadOption>
+      <SketchPadOption
+        handleClick={() => console.log("sketchpad cleared (not implemented)")}
+      >
+        Clear SketchPad {/* maybe use an icon instead */}
+      </SketchPadOption>
+      <SketchPadOption
+        handleClick={() => {
+          showingGrid = !showingGrid;
+          console.log(`showingGrid: ${showingGrid}, not yet implemented`);
+        }}
+      >
+        Toggle Grid Lines
+      </SketchPadOption>
       <Slider
-        style={{ width: "90%", height: 30 }}
+        marks={marks}
+        style={{ width: "90%", height: 30, marginBottom: 16 }}
         defaultValue={32}
         min={8}
         max={64}
         step={1}
         label={(value) => value}
-        labelAlwaysOn
+        //labelAlwaysOn
       />
-      <ColorPicker />
-      <SketchPadOption>Background Color</SketchPadOption>
-      <SketchPadOption>
-        Clear SketchPad {/* maybe use an icon instead */}
-      </SketchPadOption>
-      <SketchPadOption>Toggle Grid Lines</SketchPadOption>
     </Center>
   );
 };
