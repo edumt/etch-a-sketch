@@ -1,12 +1,8 @@
-import { Center, Slider, ColorInput } from "@mantine/core";
+import { Center, ColorInput } from "@mantine/core";
+import ResolutionSlider from "../ResolutionSlider";
 import SketchPadOption from "./SketchPadOption";
 
-const SketchPadOptions = () => {
-  const marks = [
-    { value: 8, label: 8 },
-    { value: 64, label: 64 },
-  ];
-
+const SketchPadOptions = ({ handleResolution }) => {
   let showingGrid = false;
 
   return (
@@ -32,16 +28,7 @@ const SketchPadOptions = () => {
       >
         Toggle Grid Lines
       </SketchPadOption>
-      <Slider
-        marks={marks}
-        style={{ width: "90%", height: 30, marginBottom: 16 }}
-        defaultValue={16}
-        min={8}
-        max={64}
-        step={1}
-        label={(value) => value}
-        //labelAlwaysOn
-      />
+      <ResolutionSlider handleResolution={handleResolution} />
     </Center>
   );
 };

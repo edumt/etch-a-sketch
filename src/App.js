@@ -14,17 +14,18 @@ const Wrapper = styled.div`
 function App() {
   const [pickedColor, setPickedColor] = useState("#000000");
   const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
+  const [gridResolution, setGridResolution] = useState(16);
 
   return (
     <Wrapper>
       <ColoringOptions handleColorPicking={setPickedColor} />
       <SketchPad
         size={600}
-        resolution={16}
+        resolution={gridResolution}
         pickedColor={pickedColor}
         backgroundColor={backgroundColor}
       />
-      <SketchPadOptions />
+      <SketchPadOptions handleResolution={setGridResolution} />
     </Wrapper>
   );
 }
