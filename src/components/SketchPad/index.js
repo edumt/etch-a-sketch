@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   border: 1px solid black;
+  margin: 0 16px;
 `;
 
 const createGrid = (

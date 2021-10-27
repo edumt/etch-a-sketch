@@ -8,8 +8,22 @@ const Pixel = ({ size, pickedColor, backgroundColor }) => {
 
   const handleHover = () => {
     //todo: track if left button is pressed to draw
-    setColor(pickedColor);
-    //console.log(pickedColor);
+    switch (pickedColor) {
+      case "eraser":
+        setColor(backgroundColor);
+        break;
+      case "rainbow":
+        setColor(randomColor());
+        break;
+      case "tint":
+        setColor(randomColor());
+        break;
+      case "shade":
+        setColor(randomColor());
+        break;
+      default:
+        setColor(pickedColor);
+    }
   };
 
   const preventDragHandler = (e) => {
