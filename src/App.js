@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 
 function App() {
   const [pickedColor, setPickedColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
 
   return (
     <Wrapper>
@@ -21,7 +22,7 @@ function App() {
         size={600}
         resolution={16}
         pickedColor={pickedColor}
-        backgroundColor={"#FFFFFF"}
+        backgroundColor={backgroundColor}
       />
       <SketchPadOptions />
     </Wrapper>
