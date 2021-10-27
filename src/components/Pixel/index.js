@@ -1,16 +1,15 @@
 import { useState } from "react";
 import * as S from "./styled";
 
-const Pixel = ({ size }) => {
-  const [color, setColor] = useState("#FFFFFF");
-
+const Pixel = ({ size, pickedColor, backgroundColor }) => {
   const randomColor = () =>
     "#" + Math.floor(Math.random() * 16777215).toString(16);
+  const [color, setColor] = useState(backgroundColor);
+
   const handleHover = () => {
     //todo: track if left button is pressed to draw
-    setColor(randomColor());
-    //let pickedColor = "#000000"; //testing variable, need to implement color picker
-    //setColor(pickedColor);
+    setColor(pickedColor);
+    //console.log(pickedColor);
   };
 
   const preventDragHandler = (e) => {

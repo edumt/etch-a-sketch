@@ -10,14 +10,28 @@ const Wrapper = styled.div`
   border: 1px solid black;
 `;
 
-const createGrid = (size, resolution) => {
+const createGrid = (
+  size = 600,
+  resolution = 16,
+  pickedColor,
+  backgroundColor
+) => {
   return [...Array(resolution * resolution)].map((_, index) => (
-    <Pixel key={index} size={size / resolution} />
+    <Pixel
+      key={index}
+      size={size / resolution}
+      pickedColor={pickedColor}
+      backgroundColor={backgroundColor}
+    />
   ));
 };
 
-const SketchPad = ({ size, resolution }) => {
-  return <Wrapper size={size}>{createGrid(size, resolution)}</Wrapper>;
+const SketchPad = ({ size, resolution, pickedColor, backgroundColor }) => {
+  return (
+    <Wrapper size={size}>
+      {createGrid(size, resolution, pickedColor, backgroundColor)}
+    </Wrapper>
+  );
 };
 
 export default SketchPad;

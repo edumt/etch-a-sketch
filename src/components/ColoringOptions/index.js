@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Center, ColorInput } from "@mantine/core";
 import ColoringOption from "./ColoringOption";
 
-const ColoringOptions = () => {
+const ColoringOptions = ({ handleColorPicking }) => {
   const [activeOption, setActiveOption] = useState(0);
   const optionsVariant = [];
   for (let i = 0; i < 5; i++) {
@@ -15,7 +15,10 @@ const ColoringOptions = () => {
       <ColorInput value={"#000000"} />
       <ColoringOption
         variant={optionsVariant[0]}
-        handleClick={() => setActiveOption(0)}
+        handleClick={() => {
+          setActiveOption(0);
+          handleColorPicking("#999999");
+        }}
       >
         Picked Color
       </ColoringOption>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Center, Slider, ColorInput } from "@mantine/core";
 import SketchPadOption from "./SketchPadOption";
 
@@ -36,7 +35,7 @@ const SketchPadOptions = () => {
       <Slider
         marks={marks}
         style={{ width: "90%", height: 30, marginBottom: 16 }}
-        defaultValue={32}
+        defaultValue={16}
         min={8}
         max={64}
         step={1}
