@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as S from "./styled";
 
 const Pixel = ({ size, pickedColor, backgroundColor }) => {
   const randomColor = () =>
     "#" + Math.floor(Math.random() * 16777215).toString(16);
   const [color, setColor] = useState(backgroundColor);
+  const [bgColor, setBgColor] = useState(backgroundColor);
+  useEffect(() => {
+    if (color === bgColor) setColor(backgroundColor);
+    setBgColor(backgroundColor);
+
+    //setColor(backgroundColor);
+  }, [backgroundColor]);
 
   const handleHover = () => {
     //todo: track if left button is pressed to draw

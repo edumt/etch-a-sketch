@@ -19,13 +19,19 @@ function App() {
   return (
     <Wrapper>
       <ColoringOptions handleColorPicking={setPickedColor} />
-      <SketchPad
-        size={600}
-        resolution={gridResolution}
-        pickedColor={pickedColor}
-        backgroundColor={backgroundColor}
+      <div>
+        <h1>Etch-a-Sketch</h1>
+        <SketchPad
+          size={600}
+          resolution={gridResolution}
+          pickedColor={pickedColor}
+          backgroundColor={backgroundColor}
+        />
+      </div>
+      <SketchPadOptions
+        handleResolution={setGridResolution}
+        handleBackgroundColor={setBackgroundColor}
       />
-      <SketchPadOptions handleResolution={setGridResolution} />
     </Wrapper>
   );
 }

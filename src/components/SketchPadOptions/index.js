@@ -1,17 +1,26 @@
+import { useState } from "react";
 import { Center, ColorInput } from "@mantine/core";
 import ResolutionSlider from "../ResolutionSlider";
 import SketchPadOption from "./SketchPadOption";
 
-const SketchPadOptions = ({ handleResolution }) => {
+const SketchPadOptions = ({ handleResolution, handleBackgroundColor }) => {
   let showingGrid = false;
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
 
   return (
     <Center style={{ flexDirection: "column-reverse", width: 250 }}>
-      <ColorInput value={"#FFFFFF"} />
+      <ColorInput
+        style={{ display: "flex" }}
+        value={backgroundColor}
+        //format="rgba"
+        onChange={(event) => setBackgroundColor(event)}
+      />
       <SketchPadOption
-        handleClick={() =>
-          console.log("background color changed (not implemented)")
-        }
+        handleClick={() => {
+          handleBackgroundColor(backgroundColor);
+
+          //clearSketchpad()
+        }}
       >
         Background Color
       </SketchPadOption>
