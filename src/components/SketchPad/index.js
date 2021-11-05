@@ -15,7 +15,8 @@ const createGrid = (
   size = 600,
   resolution = 16,
   pickedColor,
-  backgroundColor
+  backgroundColor,
+  clearSketchPad
 ) => {
   return [...Array(resolution * resolution)].map((_, index) => (
     <Pixel
@@ -23,14 +24,27 @@ const createGrid = (
       size={size / resolution}
       pickedColor={pickedColor}
       backgroundColor={backgroundColor}
+      clearSketchPad={clearSketchPad}
     />
   ));
 };
 
-const SketchPad = ({ size, resolution, pickedColor, backgroundColor }) => {
+const SketchPad = ({
+  size,
+  resolution,
+  pickedColor,
+  backgroundColor,
+  clearSketchPad,
+}) => {
   return (
     <Wrapper size={size}>
-      {createGrid(size, resolution, pickedColor, backgroundColor)}
+      {createGrid(
+        size,
+        resolution,
+        pickedColor,
+        backgroundColor,
+        clearSketchPad
+      )}
     </Wrapper>
   );
 };

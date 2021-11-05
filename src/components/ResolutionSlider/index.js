@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Slider } from "@mantine/core";
 
 const ResolutionSlider = ({ handleResolution }) => {
+  const minValue = 8;
+  const maxValue = 48;
   const marks = [
-    { value: 8, label: 8 },
-    { value: 64, label: 64 },
+    { value: minValue, label: minValue },
+    { value: maxValue, label: maxValue },
   ];
   const [value, setValue] = useState(16);
 
@@ -16,8 +18,8 @@ const ResolutionSlider = ({ handleResolution }) => {
         marks={marks}
         style={{ width: "90%", height: 30, marginBottom: 16 }}
         value={value}
-        min={8}
-        max={64}
+        min={minValue}
+        max={maxValue}
         step={1}
         label={(value) => value}
         onChange={(e) => setValue(e)}

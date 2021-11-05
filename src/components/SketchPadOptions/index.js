@@ -3,9 +3,15 @@ import { Center, ColorInput } from "@mantine/core";
 import ResolutionSlider from "../ResolutionSlider";
 import SketchPadOption from "./SketchPadOption";
 
-const SketchPadOptions = ({ handleResolution, handleBackgroundColor }) => {
-  let showingGrid = false;
+const SketchPadOptions = ({
+  handleResolution,
+  handleBackgroundColor,
+  handleClearSketchPad,
+}) => {
   const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
+  let clearSketchPad = false;
+
+  let showingGrid = false;
 
   return (
     <Center style={{ flexDirection: "column-reverse", width: 250 }}>
@@ -16,16 +22,15 @@ const SketchPadOptions = ({ handleResolution, handleBackgroundColor }) => {
         onChange={(event) => setBackgroundColor(event)}
       />
       <SketchPadOption
-        handleClick={() => {
-          handleBackgroundColor(backgroundColor);
-
-          //clearSketchpad()
-        }}
+        handleClick={() => handleBackgroundColor(backgroundColor)}
       >
         Background Color
       </SketchPadOption>
       <SketchPadOption
-        handleClick={() => console.log("sketchpad cleared (not implemented)")}
+        handleClick={() => {
+          clearSketchPad = !clearSketchPad;
+          handleClearSketchPad(clearSketchPad);
+        }}
       >
         Clear SketchPad {/* maybe use an icon instead */}
       </SketchPadOption>
