@@ -5,14 +5,16 @@ export const Pixel = styled.div.attrs((props) => ({
     height: props.size || 75,
     width: props.size || 75,
     borderWidth: props.size * 0.08 || 6,
-    backgroundColor: props.color || "black",
+    backgroundColor: props.color || "white",
   },
 }))`
   box-sizing: border-box;
-  border: solid transparent;
+  border: transparent;
+  transition: ease;
 
   &:hover {
     border: dashed black;
+    transition: ease 0.25s;
     //box-shadow: inset 0 0 10px #fff;
   }
 `;
