@@ -14,7 +14,7 @@ export const Pixel = styled.div.attrs((props) => ({
 
   &:hover {
     border: dashed black;
-    transition: ease 0.25s;
+    transition: background-color ease 0.15s;
     //box-shadow: inset 0 0 10px #fff;
   }
 `;

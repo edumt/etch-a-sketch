@@ -12,8 +12,10 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  const [pickedColor, setPickedColor] = useState("#000000");
-  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
+  const [pickedColor, setPickedColor] = useState("rgba(0, 0, 0, 1)");
+  const [backgroundColor, setBackgroundColor] = useState(
+    "rgba(255, 255, 255, 1)"
+  );
   const [gridResolution, setGridResolution] = useState(16);
   const [clearSketchPad, setClearSketchPad] = useState(false);
 

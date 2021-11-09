@@ -8,7 +8,9 @@ const SketchPadOptions = ({
   handleBackgroundColor,
   handleClearSketchPad,
 }) => {
-  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
+  const [backgroundColor, setBackgroundColor] = useState(
+    "rgba(255, 255, 255, 1)"
+  );
   let clearSketchPad = false;
 
   let showingGrid = false;
@@ -18,7 +20,7 @@ const SketchPadOptions = ({
       <ColorInput
         style={{ display: "flex" }}
         value={backgroundColor}
-        //format="rgba"
+        format="rgba"
         onChange={(event) => setBackgroundColor(event)}
       />
       <SketchPadOption

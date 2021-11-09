@@ -9,14 +9,14 @@ const ColoringOptions = ({ handleColorPicking }) => {
     if (i === activeOption) optionsVariant[i] = "filled";
     else optionsVariant[i] = "outline";
   }
-  const [pickedColor, setPickedColor] = useState("#000000");
+  const [pickedColor, setPickedColor] = useState("rgba(0, 0, 0, 1)");
 
   return (
     <Center style={{ flexDirection: "column-reverse", width: 250 }}>
       <ColorInput
         style={{ display: "flex" }}
         value={pickedColor}
-        //format="rgba"
+        format="rgba"
         onChange={(event) => {
           setPickedColor(event);
           if (activeOption === 0) handleColorPicking(pickedColor);
