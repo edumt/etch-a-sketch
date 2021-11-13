@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import * as S from "./styled";
 
-const Pixel = ({ size, pickedColor, backgroundColor, clearSketchPad }) => {
+const Pixel = ({
+  size,
+  pickedColor,
+  backgroundColor,
+  clearSketchPad,
+  showingGrid,
+}) => {
   //const randomColor = () => "#" + Math.floor(Math.random() * 16777215).toString(16);
   const randomRGB = () => Math.floor(Math.random() * 255);
   const randomRGBA = () =>
@@ -25,8 +31,11 @@ const Pixel = ({ size, pickedColor, backgroundColor, clearSketchPad }) => {
 
     return `rgba(${r}, ${g}, ${b}, 1)`;
   };
+  const getGridColor = ([r, g, b]) =>
+    r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#000000" : "#FFFFFF";
   const [color, setColor] = useState(backgroundColor);
   const [bgColor, setBgColor] = useState(backgroundColor);
+  const [isShowingGrid, setIsShowingGrid] = useState(false);
 
   useEffect(() => {
     if (color === bgColor) setColor(backgroundColor);
@@ -37,15 +46,20 @@ const Pixel = ({ size, pickedColor, backgroundColor, clearSketchPad }) => {
     if (color !== backgroundColor) setColor(backgroundColor);
   }, [clearSketchPad]);
 
+  let gridColor = getGridColor(getRGBA(color));
+  useEffect(() => {
+    setIsShowingGrid(!isShowingGrid);
+    gridColor = getGridColor(getRGBA(color));
+  }, [showingGrid]);
+
   const handleHover = () => {
     //todo: track if left button is pressed to draw
     switch (pickedColor) {
       case "eraser":
-        setColor(backgroundColor);
+        if (color !== backgroundColor) setColor(backgroundColor);
         break;
       case "rainbow":
         setColor(randomRGBA());
-        //console.log(randomRGBA());
         break;
       case "tint":
         setColor(tintShade(color, 1));
@@ -68,6 +82,8 @@ const Pixel = ({ size, pickedColor, backgroundColor, clearSketchPad }) => {
       color={color}
       onMouseOver={handleHover}
       onDragStart={preventDragHandler}
+      showingGrid={isShowingGrid}
+      gridColor={gridColor}
     />
   );
 };

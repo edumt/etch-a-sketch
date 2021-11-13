@@ -7,13 +7,14 @@ const SketchPadOptions = ({
   handleResolution,
   handleBackgroundColor,
   handleClearSketchPad,
+  handleToggleGrid,
 }) => {
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)"
   );
   let clearSketchPad = false;
 
-  let showingGrid = false;
+  const [showingGrid, setShowingGrid] = useState(false);
 
   return (
     <Center style={{ flexDirection: "column-reverse", width: 250 }}>
@@ -38,8 +39,9 @@ const SketchPadOptions = ({
       </SketchPadOption>
       <SketchPadOption
         handleClick={() => {
-          showingGrid = !showingGrid;
-          console.log(`showingGrid: ${showingGrid}, not yet implemented`);
+          setShowingGrid(!showingGrid);
+          handleToggleGrid(showingGrid);
+          //console.log(showingGrid);
         }}
       >
         Toggle Grid Lines

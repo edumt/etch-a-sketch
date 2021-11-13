@@ -18,6 +18,7 @@ function App() {
   );
   const [gridResolution, setGridResolution] = useState(16);
   const [clearSketchPad, setClearSketchPad] = useState(false);
+  const [isShowingGrid, setIsShowingGrid] = useState(false);
 
   return (
     <Wrapper>
@@ -30,12 +31,14 @@ function App() {
           pickedColor={pickedColor}
           backgroundColor={backgroundColor}
           clearSketchPad={clearSketchPad}
+          showingGrid={isShowingGrid}
         />
       </div>
       <SketchPadOptions
         handleResolution={setGridResolution}
         handleBackgroundColor={setBackgroundColor}
         handleClearSketchPad={setClearSketchPad}
+        handleToggleGrid={setIsShowingGrid}
       />
     </Wrapper>
   );
