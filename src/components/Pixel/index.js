@@ -35,7 +35,7 @@ const Pixel = ({
     r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#000000" : "#FFFFFF";
   const [color, setColor] = useState(backgroundColor);
   const [bgColor, setBgColor] = useState(backgroundColor);
-  const [isShowingGrid, setIsShowingGrid] = useState(true);
+  const [isShowingGrid, setIsShowingGrid] = useState(showingGrid);
 
   useEffect(() => {
     if (color === bgColor) setColor(backgroundColor);
