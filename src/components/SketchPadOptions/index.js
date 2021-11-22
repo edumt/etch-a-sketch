@@ -12,7 +12,7 @@ const SketchPadOptions = ({
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)"
   );
-  let clearSketchPad = false;
+  const [clearSketchPad, setClearSketchPad] = useState(false);
 
   const [showingGrid, setShowingGrid] = useState(false);
 
@@ -31,8 +31,8 @@ const SketchPadOptions = ({
       </SketchPadOption>
       <SketchPadOption
         handleClick={() => {
-          clearSketchPad = !clearSketchPad;
-          handleClearSketchPad(clearSketchPad);
+          handleClearSketchPad(!clearSketchPad);
+          setClearSketchPad(!clearSketchPad);
         }}
       >
         Clear SketchPad {/* maybe use an icon instead */}
