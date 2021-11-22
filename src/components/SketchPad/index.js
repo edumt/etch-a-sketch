@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import Pixel from "../Pixel";
 
@@ -41,15 +40,10 @@ const SketchPad = ({
   backgroundColor,
   clearSketchPad,
   showingGrid,
+  isMouseDown,
 }) => {
-  const [isMouseDown, setIsMouseDown] = useState(false);
-
   return (
-    <Wrapper
-      size={size}
-      onMouseDown={() => setIsMouseDown(true)}
-      onMouseUp={() => setIsMouseDown(false)}
-    >
+    <Wrapper size={size}>
       {createGrid(
         size,
         resolution,

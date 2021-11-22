@@ -54,7 +54,6 @@ const Pixel = ({
   }, [showingGrid]);
 
   const handleHover = () => {
-    //todo: track if left button is pressed to draw
     if (isMouseDown) {
       switch (pickedColor) {
         case "eraser":

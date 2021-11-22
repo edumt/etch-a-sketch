@@ -19,9 +19,13 @@ function App() {
   const [gridResolution, setGridResolution] = useState(16);
   const [clearSketchPad, setClearSketchPad] = useState(false);
   const [isShowingGrid, setIsShowingGrid] = useState(true);
+  const [isMouseDown, setIsMouseDown] = useState(false);
 
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseDown={() => setIsMouseDown(true)}
+      onMouseUp={() => setIsMouseDown(false)}
+    >
       <ColoringOptions handleColorPicking={setPickedColor} />
       <div>
         <h1>Etch A Sketch</h1>
@@ -32,6 +36,7 @@ function App() {
           backgroundColor={backgroundColor}
           clearSketchPad={clearSketchPad}
           showingGrid={isShowingGrid}
+          isMouseDown={isMouseDown}
         />
       </div>
       <SketchPadOptions
