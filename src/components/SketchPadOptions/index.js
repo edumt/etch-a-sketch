@@ -39,8 +39,8 @@ const SketchPadOptions = ({
       </SketchPadOption>
       <SketchPadOption
         handleClick={() => {
+          handleToggleGrid(!showingGrid);
           setShowingGrid(!showingGrid);
-          handleToggleGrid(showingGrid);
           //console.log(showingGrid);
         }}
       >

@@ -49,8 +49,9 @@ const Pixel = ({
 
   let gridColor = getGridColor(getRGBA(color));
   useEffect(() => {
-    setIsShowingGrid(!isShowingGrid);
-    gridColor = getGridColor(getRGBA(color));
+    setIsShowingGrid(showingGrid);
+    //console.log(showingGrid);
+    //gridColor = getGridColor(getRGBA(color));
   }, [showingGrid]);
 
   const handleHover = () => {
@@ -75,8 +76,6 @@ const Pixel = ({
   };
 
   const handleClick = () => {
-    //todo: track if left button is pressed to draw
-
     switch (pickedColor) {
       case "eraser":
         if (color !== backgroundColor) setColor(backgroundColor);

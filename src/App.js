@@ -18,7 +18,7 @@ function App() {
   );
   const [gridResolution, setGridResolution] = useState(16);
   const [clearSketchPad, setClearSketchPad] = useState(false);
-  const [isShowingGrid, setIsShowingGrid] = useState(true);
+  const [isShowingGrid, setIsShowingGrid] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
 
   return (
