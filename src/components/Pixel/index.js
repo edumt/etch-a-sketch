@@ -7,6 +7,7 @@ const Pixel = ({
   backgroundColor,
   clearSketchPad,
   showingGrid,
+  isMouseDown,
 }) => {
   //const randomColor = () => "#" + Math.floor(Math.random() * 16777215).toString(16);
   const randomRGB = () => Math.floor(Math.random() * 255);
@@ -32,7 +33,7 @@ const Pixel = ({
     return `rgba(${r}, ${g}, ${b}, 1)`;
   };
   const getGridColor = ([r, g, b]) =>
-    r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#000000" : "#FFFFFF";
+    r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#111" : "#EEE";
   const [color, setColor] = useState(backgroundColor);
   const [bgColor, setBgColor] = useState(backgroundColor);
   const [isShowingGrid, setIsShowingGrid] = useState(showingGrid);
@@ -54,6 +55,29 @@ const Pixel = ({
 
   const handleHover = () => {
     //todo: track if left button is pressed to draw
+    if (isMouseDown) {
+      switch (pickedColor) {
+        case "eraser":
+          if (color !== backgroundColor) setColor(backgroundColor);
+          break;
+        case "rainbow":
+          setColor(randomRGBA());
+          break;
+        case "tint":
+          setColor(tintShade(color, 1));
+          break;
+        case "shade":
+          setColor(tintShade(color, -1));
+          break;
+        default:
+          if (color !== pickedColor) setColor(pickedColor);
+      }
+    }
+  };
+
+  const handleClick = () => {
+    //todo: track if left button is pressed to draw
+
     switch (pickedColor) {
       case "eraser":
         if (color !== backgroundColor) setColor(backgroundColor);
@@ -81,6 +105,7 @@ const Pixel = ({
       size={size}
       color={color}
       onMouseOver={handleHover}
+      onMouseDown={handleClick}
       onDragStart={preventDragHandler}
       showingGrid={isShowingGrid}
       gridColor={gridColor}

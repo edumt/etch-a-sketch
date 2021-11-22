@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Pixel from "../Pixel";
 
@@ -17,7 +18,8 @@ const createGrid = (
   pickedColor,
   backgroundColor,
   clearSketchPad,
-  showingGrid
+  showingGrid,
+  isMouseDown
 ) => {
   return [...Array(resolution * resolution)].map((_, index) => (
     <Pixel
@@ -27,6 +29,7 @@ const createGrid = (
       backgroundColor={backgroundColor}
       clearSketchPad={clearSketchPad}
       showingGrid={showingGrid}
+      isMouseDown={isMouseDown}
     />
   ));
 };
@@ -39,15 +42,22 @@ const SketchPad = ({
   clearSketchPad,
   showingGrid,
 }) => {
+  const [isMouseDown, setIsMouseDown] = useState(false);
+
   return (
-    <Wrapper size={size}>
+    <Wrapper
+      size={size}
+      onMouseDown={() => setIsMouseDown(true)}
+      onMouseUp={() => setIsMouseDown(false)}
+    >
       {createGrid(
         size,
         resolution,
         pickedColor,
         backgroundColor,
         clearSketchPad,
-        showingGrid
+        showingGrid,
+        isMouseDown
       )}
     </Wrapper>
   );
