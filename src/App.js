@@ -3,12 +3,11 @@ import styled from "styled-components";
 import SketchPad from "./components/SketchPad";
 import ColoringOptions from "./components/ColoringOptions";
 import SketchPadOptions from "./components/SketchPadOptions";
+import { Center } from "@mantine/core";
 
-const Wrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const Title = styled.h1`
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 function App() {
@@ -22,13 +21,14 @@ function App() {
   const [isMouseDown, setIsMouseDown] = useState(false);
 
   return (
-    <Wrapper
+    <Center
+      style={{ height: "100vh", backgroundColor: "snow" }}
       onMouseDown={() => setIsMouseDown(true)}
       onMouseUp={() => setIsMouseDown(false)}
     >
       <ColoringOptions handleColorPicking={setPickedColor} />
       <div>
-        <h1>Etch A Sketch</h1>
+        <Title>Etch A Sketch</Title>
         <SketchPad
           size={600}
           resolution={gridResolution}
@@ -45,7 +45,7 @@ function App() {
         handleClearSketchPad={setClearSketchPad}
         handleToggleGrid={setIsShowingGrid}
       />
-    </Wrapper>
+    </Center>
   );
 }
 

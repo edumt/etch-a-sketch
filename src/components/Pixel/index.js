@@ -47,7 +47,8 @@ const Pixel = ({
     if (color !== backgroundColor) setColor(backgroundColor);
   }, [clearSketchPad]);
 
-  let gridColor = getGridColor(getRGBA(color));
+  //let gridColor = getGridColor(getRGBA(color));
+  let gridColor = "#898";
   useEffect(() => {
     setIsShowingGrid(showingGrid);
     //console.log(showingGrid);
