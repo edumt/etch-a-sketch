@@ -12,9 +12,15 @@ const ColoringOptions = ({ handleColorPicking }) => {
   const [pickedColor, setPickedColor] = useState("rgba(0, 0, 0, 1)");
 
   return (
-    <Center style={{ flexDirection: "column-reverse", width: 250 }}>
+    <Center
+      style={{
+        flexDirection: "column-reverse",
+        width: 250,
+        marginTop: "25px",
+      }}
+    >
       <ColorInput
-        style={{ display: "flex" }}
+        style={{ margin: "5px 0" }}
         value={pickedColor}
         format="rgba"
         onChange={(event) => {

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Center, ColorInput } from "@mantine/core";
+import styled from "styled-components";
 import ResolutionSlider from "../ResolutionSlider";
 import Option from "../Option";
+
+const Wrapper = styled.div`
+  width: 100%;
+  margin-left: 20px;
+`;
 
 const SketchPadOptions = ({
   handleResolution,
@@ -17,17 +23,28 @@ const SketchPadOptions = ({
   const [showingGrid, setShowingGrid] = useState(false);
 
   return (
-    <Center style={{ flexDirection: "column-reverse", width: 250 }}>
+    <Center
+      style={{
+        flexDirection: "column-reverse",
+        width: 250,
+      }}
+    >
       <ColorInput
-        style={{ display: "flex" }}
+        style={{ margin: "5px 0" }}
         value={backgroundColor}
         format="rgba"
         onChange={(event) => setBackgroundColor(event)}
       />
-      <Option handleClick={() => handleBackgroundColor(backgroundColor)}>
+      <Option
+        variant="light"
+        color="dark"
+        handleClick={() => handleBackgroundColor(backgroundColor)}
+      >
         Background Color
       </Option>
       <Option
+        variant="light"
+        color="dark"
         handleClick={() => {
           setClearSketchPad((clearSketchPad + 1) % 16);
           handleClearSketchPad(clearSketchPad);
@@ -36,6 +53,8 @@ const SketchPadOptions = ({
         Clear SketchPad {/* maybe use an icon instead */}
       </Option>
       <Option
+        variant="light"
+        color="dark"
         handleClick={() => {
           handleToggleGrid(!showingGrid);
           setShowingGrid(!showingGrid);
@@ -44,7 +63,9 @@ const SketchPadOptions = ({
       >
         Toggle Grid Lines
       </Option>
-      <ResolutionSlider handleResolution={handleResolution} />
+      <Wrapper>
+        <ResolutionSlider handleResolution={handleResolution} />
+      </Wrapper>
     </Center>
   );
 };

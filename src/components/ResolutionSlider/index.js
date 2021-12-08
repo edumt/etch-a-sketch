@@ -12,7 +12,7 @@ const ResolutionSlider = ({ handleResolution }) => {
 
   return (
     //temp solution, should style it better
-    <div style={{ width: "80%", textAlign: "center" }}>
+    <div style={{ width: "100%", textAlign: "center" }}>
       <span>Grid resolution: {`${value} x ${value}`}</span>
       <Slider
         marks={marks}

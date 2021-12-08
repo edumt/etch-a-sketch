@@ -7,9 +7,9 @@ const style = {
   maxWidth: "180px",
 };
 
-const Option = ({ children, variant, handleClick }) => {
+const Option = ({ children, variant, color, handleClick }) => {
   return (
-    <Button style={style} variant={variant} onClick={handleClick}>
+    <Button style={style} variant={variant} color={color} onClick={handleClick}>
       {children}
     </Button>
   );

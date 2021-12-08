@@ -32,8 +32,10 @@ const Pixel = ({
 
     return `rgba(${r}, ${g}, ${b}, 1)`;
   };
-  const getGridColor = ([r, g, b]) =>
-    r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#111" : "#EEE";
+  /* 
+    todo: add grid line contrast
+    const getGridColor = ([r, g, b]) =>
+    r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#111" : "#EEE"; */
   const [color, setColor] = useState(backgroundColor);
   const [bgColor, setBgColor] = useState(backgroundColor);
   const [isShowingGrid, setIsShowingGrid] = useState(showingGrid);
