@@ -1,3 +1,5 @@
+# Try Etch-A-Sketch!
+
 [Live preview](https://etch-a-sketch-react.netlify.app/)
 
 # Getting Started with Create React App
