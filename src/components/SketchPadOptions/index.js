@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Center, ColorInput } from "@mantine/core";
 import ResolutionSlider from "../ResolutionSlider";
-import SketchPadOption from "./SketchPadOption";
+import Option from "../Option";
 
 const SketchPadOptions = ({
   handleResolution,
@@ -24,20 +24,18 @@ const SketchPadOptions = ({
         format="rgba"
         onChange={(event) => setBackgroundColor(event)}
       />
-      <SketchPadOption
-        handleClick={() => handleBackgroundColor(backgroundColor)}
-      >
+      <Option handleClick={() => handleBackgroundColor(backgroundColor)}>
         Background Color
-      </SketchPadOption>
-      <SketchPadOption
+      </Option>
+      <Option
         handleClick={() => {
           handleClearSketchPad(!clearSketchPad);
           setClearSketchPad(!clearSketchPad);
         }}
       >
         Clear SketchPad {/* maybe use an icon instead */}
-      </SketchPadOption>
-      <SketchPadOption
+      </Option>
+      <Option
         handleClick={() => {
           handleToggleGrid(!showingGrid);
           setShowingGrid(!showingGrid);
@@ -45,7 +43,7 @@ const SketchPadOptions = ({
         }}
       >
         Toggle Grid Lines
-      </SketchPadOption>
+      </Option>
       <ResolutionSlider handleResolution={handleResolution} />
     </Center>
   );

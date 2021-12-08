@@ -6,8 +6,9 @@ import SketchPadOptions from "./components/SketchPadOptions";
 import { Center } from "@mantine/core";
 
 const Title = styled.h1`
-  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 48px;
 `;
 
 function App() {

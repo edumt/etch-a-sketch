@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Center, ColorInput } from "@mantine/core";
-import ColoringOption from "./ColoringOption";
+import Option from "../Option";
 
 const ColoringOptions = ({ handleColorPicking }) => {
   const [activeOption, setActiveOption] = useState(0);
@@ -22,7 +22,7 @@ const ColoringOptions = ({ handleColorPicking }) => {
           if (activeOption === 0) handleColorPicking(pickedColor);
         }}
       />
-      <ColoringOption
+      <Option
         variant={optionsVariant[0]}
         handleClick={() => {
           setActiveOption(0);
@@ -30,8 +30,8 @@ const ColoringOptions = ({ handleColorPicking }) => {
         }}
       >
         Picked Color
-      </ColoringOption>
-      <ColoringOption
+      </Option>
+      <Option
         variant={optionsVariant[1]}
         value={1}
         handleClick={() => {
@@ -40,8 +40,8 @@ const ColoringOptions = ({ handleColorPicking }) => {
         }}
       >
         Eraser
-      </ColoringOption>
-      <ColoringOption
+      </Option>
+      <Option
         variant={optionsVariant[2]}
         handleClick={() => {
           setActiveOption(2);
@@ -49,8 +49,8 @@ const ColoringOptions = ({ handleColorPicking }) => {
         }}
       >
         Rainbow Mode
-      </ColoringOption>
-      <ColoringOption
+      </Option>
+      <Option
         variant={optionsVariant[4]}
         handleClick={() => {
           setActiveOption(4);
@@ -58,8 +58,8 @@ const ColoringOptions = ({ handleColorPicking }) => {
         }}
       >
         Tint
-      </ColoringOption>
-      <ColoringOption
+      </Option>
+      <Option
         variant={optionsVariant[3]}
         handleClick={() => {
           setActiveOption(3);
@@ -67,7 +67,7 @@ const ColoringOptions = ({ handleColorPicking }) => {
         }}
       >
         Shade
-      </ColoringOption>
+      </Option>
     </Center>
   );
 };
