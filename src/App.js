@@ -41,7 +41,10 @@ function App() {
         />
       </div>
       <SketchPadOptions
-        handleResolution={setGridResolution}
+        handleResolution={(resolution) => {
+          setClearSketchPad(!clearSketchPad);
+          setGridResolution(resolution);
+        }}
         handleBackgroundColor={setBackgroundColor}
         handleClearSketchPad={setClearSketchPad}
         handleToggleGrid={setIsShowingGrid}
