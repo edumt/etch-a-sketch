@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  border: 1px solid black;
+  border: 5px solid #444;
   margin: 0 16px;
 `;
 

@@ -47,12 +47,10 @@ const Pixel = ({
     if (color !== backgroundColor) setColor(backgroundColor);
   }, [clearSketchPad]);
 
-  //let gridColor = getGridColor(getRGBA(color));
+  //let gridColor = getGridColor(getRGBA(color)); todo: add contrast toggle
   let gridColor = "#898";
   useEffect(() => {
     setIsShowingGrid(showingGrid);
-    //console.log(showingGrid);
-    //gridColor = getGridColor(getRGBA(color));
   }, [showingGrid]);
 
   const handleHover = () => {
