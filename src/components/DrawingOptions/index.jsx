@@ -5,7 +5,7 @@ import { setPickedColor } from "../../redux/reducers/drawingOptionsSlice";
 import { Center, ColorInput } from "@mantine/core";
 import Option from "../Option/index";
 
-const ColoringOptions = () => {
+const DrawingOptions = () => {
   const [activeOption, setActiveOption] = useState(0);
   const [colorInput, setColorInput] = useState("rgba(0, 0, 0, 1)");
   const dispatch = useDispatch();
@@ -85,4 +85,4 @@ const ColoringOptions = () => {
   );
 };
 
-export default ColoringOptions;
+export default DrawingOptions;
