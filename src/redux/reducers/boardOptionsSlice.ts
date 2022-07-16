@@ -3,10 +3,12 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface BoardOptionsState {
   gridResolution: number;
+  isShowingGrid: boolean;
 }
 
 const initialState: BoardOptionsState = {
   gridResolution: 16,
+  isShowingGrid: false,
 };
 
 export const boardOptionsSlice = createSlice({
@@ -16,9 +18,13 @@ export const boardOptionsSlice = createSlice({
     setGridResolution: (state, action: PayloadAction<number>) => {
       state.gridResolution = action.payload;
     },
+    toggleShowingGrid: (state) => {
+      state.isShowingGrid = !state.isShowingGrid;
+    },
   },
 });
 
-export const { setGridResolution } = boardOptionsSlice.actions;
+export const { setGridResolution, toggleShowingGrid } =
+  boardOptionsSlice.actions;
 
 export default boardOptionsSlice.reducer;

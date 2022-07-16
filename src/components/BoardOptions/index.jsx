@@ -3,6 +3,8 @@ import { Center, ColorInput } from "@mantine/core";
 import styled from "styled-components";
 import ResolutionSlider from "../ResolutionSlider";
 import Option from "../Option";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleShowingGrid } from "../../redux/reducers/boardOptionsSlice";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -13,14 +15,15 @@ const BoardOptions = ({
   handleResolution,
   handleBackgroundColor,
   handleClearSketchPad,
-  handleToggleGrid,
 }) => {
+  const isShowingGrid = useSelector(
+    ({ boardOptions }) => boardOptions.isShowingGrid,
+  );
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)",
   );
   const [clearSketchPad, setClearSketchPad] = useState(0);
-
-  const [showingGrid, setShowingGrid] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <Center
@@ -55,11 +58,7 @@ const BoardOptions = ({
       <Option
         variant="light"
         color="dark"
-        handleClick={() => {
-          handleToggleGrid(!showingGrid);
-          setShowingGrid(!showingGrid);
-          //console.log(showingGrid);
-        }}
+        handleClick={() => dispatch(toggleShowingGrid())}
       >
         Toggle Grid Lines
       </Option>

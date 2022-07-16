@@ -18,7 +18,6 @@ function App() {
     "rgba(255, 255, 255, 1)",
   );
   const [clearSketchPad, setClearSketchPad] = useState(false);
-  const [isShowingGrid, setIsShowingGrid] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const dispatch = useDispatch();
 
@@ -35,18 +34,16 @@ function App() {
           size={600}
           backgroundColor={backgroundColor}
           clearSketchPad={clearSketchPad}
-          showingGrid={isShowingGrid}
           isMouseDown={isMouseDown}
         />
       </div>
       <BoardOptions
         handleResolution={(resolution) => {
           setClearSketchPad(!clearSketchPad);
-          dispatch(setGridResolution(resolution));
+          dispatch(setGridResolution(resolution)); // to do: move inside BoardOptions
         }}
         handleBackgroundColor={setBackgroundColor}
         handleClearSketchPad={setClearSketchPad}
-        handleToggleGrid={setIsShowingGrid}
       />
     </Center>
   );

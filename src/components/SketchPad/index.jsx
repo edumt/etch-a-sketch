@@ -19,7 +19,7 @@ const createGrid = (
   pickedColor,
   backgroundColor,
   clearSketchPad,
-  showingGrid,
+  isShowingGrid,
   isMouseDown,
 ) => {
   return [...Array(resolution * resolution)].map((_, index) => (
@@ -29,25 +29,20 @@ const createGrid = (
       pickedColor={pickedColor}
       backgroundColor={backgroundColor}
       clearSketchPad={clearSketchPad}
-      showingGrid={showingGrid}
+      showingGrid={isShowingGrid}
       isMouseDown={isMouseDown}
     />
   ));
 };
 
-const SketchPad = ({
-  size,
-  backgroundColor,
-  clearSketchPad,
-  showingGrid,
-  isMouseDown,
-}) => {
+const SketchPad = ({ size, backgroundColor, clearSketchPad, isMouseDown }) => {
   const pickedColor = useSelector(
     ({ drawingOptions }) => drawingOptions.pickedColor,
   );
-  const resolution = useSelector(
-    ({ boardOptions }) => boardOptions.gridResolution,
-  );
+  const [resolution, isShowingGrid] = useSelector(({ boardOptions }) => [
+    boardOptions.gridResolution,
+    boardOptions.isShowingGrid,
+  ]);
 
   return (
     <Wrapper size={size}>
@@ -57,7 +52,7 @@ const SketchPad = ({
         pickedColor,
         backgroundColor,
         clearSketchPad,
-        showingGrid,
+        isShowingGrid,
         isMouseDown,
       )}
     </Wrapper>
