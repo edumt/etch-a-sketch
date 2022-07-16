@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import SketchPad from "./components/SketchPad";
-import ColoringOptions from "./components/ColoringOptions";
+import DrawingOptions from "./components/DrawingOptions/index";
 import SketchPadOptions from "./components/SketchPadOptions";
 import { Center } from "@mantine/core";
 
@@ -26,7 +26,7 @@ function App() {
       onMouseDown={() => setIsMouseDown(true)}
       onMouseUp={() => setIsMouseDown(false)}
     >
-      <ColoringOptions />
+      <DrawingOptions />
       <div>
         <Title>Etch A Sketch</Title>
         <SketchPad

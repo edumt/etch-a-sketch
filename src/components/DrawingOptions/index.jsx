@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { setPickedColor } from "../../redux/reducers/drawingOptionsSlice";
 
 import { Center, ColorInput } from "@mantine/core";
-import Option from "../Option";
+import Option from "../Option/index";
 
 const ColoringOptions = () => {
   const [activeOption, setActiveOption] = useState(0);
