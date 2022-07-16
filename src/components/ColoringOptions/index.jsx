@@ -1,15 +1,22 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setPickedColor } from "../../redux/reducers/drawingOptionsSlice";
+
 import { Center, ColorInput } from "@mantine/core";
 import Option from "../Option";
 
-const ColoringOptions = ({ handleColorPicking }) => {
+const ColoringOptions = () => {
   const [activeOption, setActiveOption] = useState(0);
+  const [colorInput, setColorInput] = useState("rgba(0, 0, 0, 1)");
+  const dispatch = useDispatch();
+
+  const handleColorPicking = (color) => dispatch(setPickedColor(color));
+
   const optionsVariant = [];
   for (let i = 0; i < 5; i++) {
     if (i === activeOption) optionsVariant[i] = "filled";
     else optionsVariant[i] = "outline";
   }
-  const [pickedColor, setPickedColor] = useState("rgba(0, 0, 0, 1)");
 
   return (
     <Center
@@ -21,18 +28,18 @@ const ColoringOptions = ({ handleColorPicking }) => {
     >
       <ColorInput
         style={{ margin: "5px 0" }}
-        value={pickedColor}
+        value={colorInput}
         format="rgba"
         onChange={(event) => {
-          setPickedColor(event);
-          if (activeOption === 0) handleColorPicking(pickedColor);
+          setColorInput(event);
+          if (activeOption === 0) handleColorPicking(colorInput);
         }}
       />
       <Option
         variant={optionsVariant[0]}
         handleClick={() => {
           setActiveOption(0);
-          handleColorPicking(pickedColor);
+          handleColorPicking(colorInput);
         }}
       >
         Picked Color

@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 import Pixel from "../Pixel";
 
@@ -18,7 +20,7 @@ const createGrid = (
   backgroundColor,
   clearSketchPad,
   showingGrid,
-  isMouseDown
+  isMouseDown,
 ) => {
   return [...Array(resolution * resolution)].map((_, index) => (
     <Pixel
@@ -36,12 +38,13 @@ const createGrid = (
 const SketchPad = ({
   size,
   resolution,
-  pickedColor,
   backgroundColor,
   clearSketchPad,
   showingGrid,
   isMouseDown,
 }) => {
+  const pickedColor = useSelector((state) => state.drawingOptions.pickedColor);
+
   return (
     <Wrapper size={size}>
       {createGrid(
@@ -51,7 +54,7 @@ const SketchPad = ({
         backgroundColor,
         clearSketchPad,
         showingGrid,
-        isMouseDown
+        isMouseDown,
       )}
     </Wrapper>
   );

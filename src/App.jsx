@@ -12,9 +12,8 @@ const Title = styled.h1`
 `;
 
 function App() {
-  const [pickedColor, setPickedColor] = useState("rgba(0, 0, 0, 1)");
   const [backgroundColor, setBackgroundColor] = useState(
-    "rgba(255, 255, 255, 1)"
+    "rgba(255, 255, 255, 1)",
   );
   const [gridResolution, setGridResolution] = useState(16);
   const [clearSketchPad, setClearSketchPad] = useState(false);
@@ -27,13 +26,12 @@ function App() {
       onMouseDown={() => setIsMouseDown(true)}
       onMouseUp={() => setIsMouseDown(false)}
     >
-      <ColoringOptions handleColorPicking={setPickedColor} />
+      <ColoringOptions />
       <div>
         <Title>Etch A Sketch</Title>
         <SketchPad
           size={600}
           resolution={gridResolution}
-          pickedColor={pickedColor}
           backgroundColor={backgroundColor}
           clearSketchPad={clearSketchPad}
           showingGrid={isShowingGrid}
