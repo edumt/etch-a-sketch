@@ -14,8 +14,8 @@ const Wrapper = styled.div`
 `;
 
 const createGrid = (
-  size = 600,
-  resolution = 16,
+  size,
+  resolution,
   pickedColor,
   backgroundColor,
   clearSketchPad,
@@ -37,13 +37,17 @@ const createGrid = (
 
 const SketchPad = ({
   size,
-  resolution,
   backgroundColor,
   clearSketchPad,
   showingGrid,
   isMouseDown,
 }) => {
-  const pickedColor = useSelector((state) => state.drawingOptions.pickedColor);
+  const pickedColor = useSelector(
+    ({ drawingOptions }) => drawingOptions.pickedColor,
+  );
+  const resolution = useSelector(
+    ({ boardOptions }) => boardOptions.gridResolution,
+  );
 
   return (
     <Wrapper size={size}>

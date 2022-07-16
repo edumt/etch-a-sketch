@@ -14,9 +14,6 @@ const Title = styled.h1`
 `;
 
 function App() {
-  const gridResolution = useSelector(
-    (state) => state.boardOptions.gridResolution,
-  );
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)",
   );
@@ -36,7 +33,6 @@ function App() {
         <Title>Etch A Sketch</Title>
         <SketchPad
           size={600}
-          resolution={gridResolution}
           backgroundColor={backgroundColor}
           clearSketchPad={clearSketchPad}
           showingGrid={isShowingGrid}
