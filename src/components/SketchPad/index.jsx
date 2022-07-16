@@ -1,11 +1,12 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import styled from "styled-components";
+import { setPixelColorByIndex } from "../../redux/reducers/boardSlice";
 import Pixel from "../Pixel";
 
 const Wrapper = styled.div`
-  height: ${(props) => (props.size ? props.size + "px" : "600px")};
-  width: ${(props) => (props.size ? props.size + "px" : "600px")};
+  height: ${(props) => (props.size ? `${props.size}px` : "600px")};
+  width: ${(props) => (props.size ? `${props.size}px` : "600px")};
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -15,14 +16,16 @@ const Wrapper = styled.div`
 
 const createGrid = (
   size,
+  pixels,
   resolution,
   pickedColor,
   backgroundColor,
   clearSketchPad,
   isShowingGrid,
   isMouseDown,
+  setColor,
 ) => {
-  return [...Array(resolution * resolution)].map((_, index) => (
+  return pixels.map((pixel, index) => (
     <Pixel
       key={index}
       size={size / resolution}
@@ -31,6 +34,8 @@ const createGrid = (
       clearSketchPad={clearSketchPad}
       showingGrid={isShowingGrid}
       isMouseDown={isMouseDown}
+      color={pixel.color}
+      setColor={setColor(index)}
     />
   ));
 };
@@ -43,17 +48,24 @@ const SketchPad = ({ size, backgroundColor, clearSketchPad, isMouseDown }) => {
     boardOptions.gridResolution,
     boardOptions.isShowingGrid,
   ]);
+  const pixels = useSelector(({ board }) => board.pixels);
+  const dispatch = useDispatch();
+
+  const setColor = (index) => (color) =>
+    dispatch(setPixelColorByIndex({ index, color }));
 
   return (
     <Wrapper size={size}>
       {createGrid(
         size,
+        pixels,
         resolution,
         pickedColor,
         backgroundColor,
         clearSketchPad,
         isShowingGrid,
         isMouseDown,
+        setColor,
       )}
     </Wrapper>
   );

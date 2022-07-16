@@ -3,11 +3,13 @@ import * as S from "./styled";
 
 const Pixel = ({
   size,
+  color,
   pickedColor,
   backgroundColor,
   clearSketchPad,
   showingGrid,
   isMouseDown,
+  setColor,
 }) => {
   //const randomColor = () => "#" + Math.floor(Math.random() * 16777215).toString(16);
   const randomRGB = () => Math.floor(Math.random() * 255);
@@ -27,7 +29,7 @@ const Pixel = ({
     };
 
     let [r, g, b] = getRGBA(color).map((item) =>
-      verifyLimit(+item + potency * 25)
+      verifyLimit(+item + potency * 25),
     );
 
     return `rgba(${r}, ${g}, ${b}, 1)`;
@@ -36,7 +38,6 @@ const Pixel = ({
     todo: add grid line contrast
     const getGridColor = ([r, g, b]) =>
     r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#111" : "#EEE"; */
-  const [color, setColor] = useState(backgroundColor);
   const [bgColor, setBgColor] = useState(backgroundColor);
   const [isShowingGrid, setIsShowingGrid] = useState(showingGrid);
 
