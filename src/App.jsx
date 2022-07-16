@@ -2,8 +2,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import SketchPad from "./components/SketchPad";
 import DrawingOptions from "./components/DrawingOptions/index";
-import SketchPadOptions from "./components/SketchPadOptions";
+import BoardOptions from "./components/BoardOptions/index";
 import { Center } from "@mantine/core";
+import { useDispatch, useSelector } from "react-redux";
+import { setGridResolution } from "./redux/reducers/boardOptionsSlice";
 
 const Title = styled.h1`
   font-family: Arial, Helvetica, sans-serif;
@@ -12,13 +14,16 @@ const Title = styled.h1`
 `;
 
 function App() {
+  const gridResolution = useSelector(
+    (state) => state.boardOptions.gridResolution,
+  );
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)",
   );
-  const [gridResolution, setGridResolution] = useState(16);
   const [clearSketchPad, setClearSketchPad] = useState(false);
   const [isShowingGrid, setIsShowingGrid] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <Center
@@ -38,10 +43,10 @@ function App() {
           isMouseDown={isMouseDown}
         />
       </div>
-      <SketchPadOptions
+      <BoardOptions
         handleResolution={(resolution) => {
           setClearSketchPad(!clearSketchPad);
-          setGridResolution(resolution);
+          dispatch(setGridResolution(resolution));
         }}
         handleBackgroundColor={setBackgroundColor}
         handleClearSketchPad={setClearSketchPad}

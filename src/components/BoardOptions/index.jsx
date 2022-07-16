@@ -9,14 +9,14 @@ const Wrapper = styled.div`
   margin-left: 20px;
 `;
 
-const SketchPadOptions = ({
+const BoardOptions = ({
   handleResolution,
   handleBackgroundColor,
   handleClearSketchPad,
   handleToggleGrid,
 }) => {
   const [backgroundColor, setBackgroundColor] = useState(
-    "rgba(255, 255, 255, 1)"
+    "rgba(255, 255, 255, 1)",
   );
   const [clearSketchPad, setClearSketchPad] = useState(0);
 
@@ -70,4 +70,4 @@ const SketchPadOptions = ({
   );
 };
 
-export default SketchPadOptions;
+export default BoardOptions;
