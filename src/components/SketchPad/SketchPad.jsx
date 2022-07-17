@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { setPixelColorByIndex } from "../../redux/reducers/boardSlice";
+import { drawPixelByIndex } from "../../redux/reducers/boardSlice";
 import Pixel from "../Pixel/Pixel";
 import { Wrapper } from "./styled";
 
-const SketchPad = ({ backgroundColor, clearSketchPad, isMouseDown }) => {
+const SketchPad = ({ clearSketchPad, isMouseDown }) => {
   const pickedColor = useSelector((state) => {
     const { drawingSettings } = state.board;
     return drawingSettings.pickedColor;
@@ -16,9 +16,6 @@ const SketchPad = ({ backgroundColor, clearSketchPad, isMouseDown }) => {
   const pixels = useSelector(({ board }) => board.pixels);
   const dispatch = useDispatch();
 
-  const setColor = (index) => (color) =>
-    dispatch(setPixelColorByIndex({ index, color }));
-
   return (
     <Wrapper size={size}>
       {pixels.map((pixel, index) => (
@@ -26,12 +23,11 @@ const SketchPad = ({ backgroundColor, clearSketchPad, isMouseDown }) => {
           key={index}
           size={size / resolution}
           pickedColor={pickedColor}
-          backgroundColor={backgroundColor}
           clearSketchPad={clearSketchPad}
           showingGrid={isShowingGrid}
           isMouseDown={isMouseDown}
           color={pixel.color}
-          setColor={setColor(index)}
+          setColor={() => dispatch(drawPixelByIndex(index))}
         />
       ))}
     </Wrapper>

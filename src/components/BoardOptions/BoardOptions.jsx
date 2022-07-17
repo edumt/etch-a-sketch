@@ -4,7 +4,10 @@ import styled from "styled-components";
 import ResolutionSlider from "../ResolutionSlider/ResolutionSlider";
 import Option from "../Option/Option";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleShowingGrid } from "../../redux/reducers/boardSlice";
+import {
+  toggleShowingGrid,
+  updateBackgroundColor,
+} from "../../redux/reducers/boardSlice";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -42,7 +45,7 @@ const BoardOptions = ({
       <Option
         variant="light"
         color="dark"
-        handleClick={() => handleBackgroundColor(backgroundColor)}
+        handleClick={() => dispatch(updateBackgroundColor(backgroundColor))}
       >
         Background Color
       </Option>
