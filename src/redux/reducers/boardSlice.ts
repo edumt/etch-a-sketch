@@ -7,9 +7,10 @@ const initialBgColor = "rgba(255, 255, 255, 1)";
 export interface BoardState {
   pixels: { color: string }[];
   boardSettings: {
-    isShowingGrid: boolean;
     size: number;
     backgroundColor: string;
+    isShowingGrid: boolean;
+    gridColor: string;
   };
   drawingSettings: {
     pickedColor: string;
@@ -19,9 +20,10 @@ export interface BoardState {
 const initialState: BoardState = {
   pixels: Array(initialResolution ** 2).fill({ color: initialBgColor }),
   boardSettings: {
-    isShowingGrid: false,
     size: 600,
     backgroundColor: initialBgColor,
+    isShowingGrid: false,
+    gridColor: "#898",
   },
   drawingSettings: { pickedColor: "rgba(0, 0, 0, 1)" },
 };
@@ -135,4 +137,3 @@ const tintShade = (color: string, potency: number) => {
 //   r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#111" : "#EEE"; */
 
 //     //let gridColor = getGridColor(getRGBA(color)); todo: add contrast toggle
-//     let gridColor = "#898";

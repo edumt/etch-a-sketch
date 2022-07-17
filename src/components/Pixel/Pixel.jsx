@@ -4,13 +4,11 @@ import * as S from "./styled";
 const Pixel = ({
   size,
   color,
-  pickedColor,
-  showingGrid,
+  isShowingGrid,
+  gridColor,
   isMouseDown,
   setColor,
 }) => {
-  const [isShowingGrid, setIsShowingGrid] = useState(showingGrid);
-
   const preventDragHandler = (e) => {
     e.preventDefault();
   };
@@ -19,11 +17,11 @@ const Pixel = ({
     <S.Pixel
       size={size}
       color={color}
-      onMouseOver={isMouseDown ? setColor : () => {}}
+      onMouseOver={isMouseDown ? setColor : () => {}} // maybe use onDrag
       onMouseDown={setColor}
       onDragStart={preventDragHandler}
-      // showingGrid={isShowingGrid}
-      // gridColor={gridColor}
+      showingGrid={isShowingGrid}
+      gridColor={gridColor}
     />
   );
 };

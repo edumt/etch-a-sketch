@@ -9,12 +9,12 @@ const SketchPad = ({ isMouseDown }) => {
     const { drawingSettings } = state.board;
     return drawingSettings.pickedColor;
   });
-  const [resolution, isShowingGrid, size] = useSelector((state) => {
-    const { isShowingGrid, size } = state.board.boardSettings;
+  const [resolution, size, isShowingGrid, gridColor] = useSelector((state) => {
+    const { isShowingGrid, gridColor, size } = state.board.boardSettings;
     const gridResolution = Math.sqrt(state.board.pixels.length);
-    return [gridResolution, isShowingGrid, size];
+    return [gridResolution, size, isShowingGrid, gridColor];
   });
-  const pixels = useSelector(({ board }) => board.pixels);
+  const pixels = useSelector((state) => state.board.pixels);
   const dispatch = useDispatch();
 
   return (
@@ -23,11 +23,11 @@ const SketchPad = ({ isMouseDown }) => {
         <Pixel
           key={index}
           size={size / resolution}
-          pickedColor={pickedColor}
-          showingGrid={isShowingGrid}
           isMouseDown={isMouseDown}
           color={pixel.color}
           setColor={() => dispatch(drawPixelByIndex(index))}
+          isShowingGrid={isShowingGrid}
+          gridColor={gridColor}
         />
       ))}
     </Wrapper>

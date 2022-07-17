@@ -19,7 +19,6 @@ function App() {
       style={{ height: "100vh", backgroundColor: "snow" }}
       onMouseDown={() => setIsMouseDown(true)}
       onMouseUp={() => setIsMouseDown(false)}
-      // maybe use onDrag
     >
       <DrawingOptions />
       <div>
