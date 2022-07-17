@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
-import SketchPad from "./components/SketchPad";
-import DrawingOptions from "./components/DrawingOptions/index";
-import BoardOptions from "./components/BoardOptions/index";
+import SketchPad from "./components/SketchPad/SketchPad";
+import DrawingOptions from "./components/DrawingOptions/DrawingOptions";
+import BoardOptions from "./components/BoardOptions/BoardOptions";
 import { Center } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
-import { setGridResolution } from "./redux/reducers/boardOptionsSlice";
+import { setGridResolution } from "./redux/reducers/boardSlice";
 
 const Title = styled.h1`
   font-family: Arial, Helvetica, sans-serif;

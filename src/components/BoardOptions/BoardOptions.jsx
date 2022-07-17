@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Center, ColorInput } from "@mantine/core";
 import styled from "styled-components";
-import ResolutionSlider from "../ResolutionSlider";
-import Option from "../Option";
+import ResolutionSlider from "../ResolutionSlider/ResolutionSlider";
+import Option from "../Option/Option";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleShowingGrid } from "../../redux/reducers/boardOptionsSlice";
+import { toggleShowingGrid } from "../../redux/reducers/boardSlice";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -16,9 +16,10 @@ const BoardOptions = ({
   handleBackgroundColor,
   handleClearSketchPad,
 }) => {
-  const isShowingGrid = useSelector(
-    ({ boardOptions }) => boardOptions.isShowingGrid,
-  );
+  const isShowingGrid = useSelector((state) => {
+    const { boardOptions } = state.board;
+    return boardOptions.isShowingGrid;
+  });
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)",
   );

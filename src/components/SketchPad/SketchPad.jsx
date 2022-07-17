@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styled from "styled-components";
 import { setPixelColorByIndex } from "../../redux/reducers/boardSlice";
-import Pixel from "../Pixel";
+import Pixel from "../Pixel/Pixel";
 
 const Wrapper = styled.div`
   height: ${(props) => (props.size ? `${props.size}px` : "600px")};
@@ -44,10 +44,10 @@ const SketchPad = ({ size, backgroundColor, clearSketchPad, isMouseDown }) => {
   const pickedColor = useSelector(
     ({ drawingOptions }) => drawingOptions.pickedColor,
   );
-  const [resolution, isShowingGrid] = useSelector(({ boardOptions }) => [
-    boardOptions.gridResolution,
-    boardOptions.isShowingGrid,
-  ]);
+  const [resolution, isShowingGrid] = useSelector((state) => {
+    const { boardOptions } = state.board;
+    return [boardOptions.gridResolution, boardOptions.isShowingGrid];
+  });
   const pixels = useSelector(({ board }) => board.pixels);
   const dispatch = useDispatch();
 
