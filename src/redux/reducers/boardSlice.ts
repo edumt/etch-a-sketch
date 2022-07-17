@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+const initialResolution = 16;
+
 export interface BoardState {
   pixels: { color: string }[];
   boardSettings: {
@@ -13,8 +15,8 @@ export interface BoardState {
 }
 
 const initialState: BoardState = {
-  pixels: Array(16 ** 2).fill({ color: "#FFF" }),
-  boardSettings: { gridResolution: 16, isShowingGrid: false },
+  pixels: Array(initialResolution ** 2).fill({ color: "#FFF" }),
+  boardSettings: { gridResolution: initialResolution, isShowingGrid: false },
   drawingSettings: { pickedColor: "#000" },
 };
 
