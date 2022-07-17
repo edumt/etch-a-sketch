@@ -5,7 +5,6 @@ const Pixel = ({
   size,
   color,
   pickedColor,
-  clearSketchPad,
   showingGrid,
   isMouseDown,
   setColor,

@@ -4,7 +4,7 @@ import { drawPixelByIndex } from "../../redux/reducers/boardSlice";
 import Pixel from "../Pixel/Pixel";
 import { Wrapper } from "./styled";
 
-const SketchPad = ({ clearSketchPad, isMouseDown }) => {
+const SketchPad = ({ isMouseDown }) => {
   const pickedColor = useSelector((state) => {
     const { drawingSettings } = state.board;
     return drawingSettings.pickedColor;
@@ -23,7 +23,6 @@ const SketchPad = ({ clearSketchPad, isMouseDown }) => {
           key={index}
           size={size / resolution}
           pickedColor={pickedColor}
-          clearSketchPad={clearSketchPad}
           showingGrid={isShowingGrid}
           isMouseDown={isMouseDown}
           color={pixel.color}

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   toggleShowingGrid,
   updateBackgroundColor,
+  clearSketchPad,
 } from "../../redux/reducers/boardSlice";
 
 const Wrapper = styled.div`
@@ -14,11 +15,7 @@ const Wrapper = styled.div`
   margin-left: 20px;
 `;
 
-const BoardOptions = ({
-  handleResolution,
-  handleBackgroundColor,
-  handleClearSketchPad,
-}) => {
+const BoardOptions = ({ handleResolution }) => {
   const isShowingGrid = useSelector((state) => {
     const { boardSettings } = state.board;
     return boardSettings.isShowingGrid;
@@ -26,7 +23,6 @@ const BoardOptions = ({
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)",
   );
-  const [clearSketchPad, setClearSketchPad] = useState(0);
   const dispatch = useDispatch();
 
   return (
@@ -52,10 +48,7 @@ const BoardOptions = ({
       <Option
         variant="light"
         color="dark"
-        handleClick={() => {
-          setClearSketchPad((clearSketchPad + 1) % 16);
-          handleClearSketchPad(clearSketchPad);
-        }}
+        handleClick={() => dispatch(clearSketchPad())}
       >
         Clear SketchPad {/* maybe use an icon instead */}
       </Option>

@@ -84,6 +84,11 @@ export const boardSlice = createSlice({
       });
       state.boardSettings.backgroundColor = color;
     },
+    clearSketchPad: (state) => {
+      state.pixels.forEach(
+        (pixel) => (pixel.color = state.boardSettings.backgroundColor),
+      );
+    },
     // DRAWING SETTINGS
     updatePickedColor: (state, action: PayloadAction<string>) => {
       state.drawingSettings.pickedColor = action.payload;
@@ -97,6 +102,7 @@ export const {
   updateGridResolution,
   toggleShowingGrid,
   updateBackgroundColor,
+  clearSketchPad,
   updatePickedColor,
   drawPixelByIndex,
 } = boardSlice.actions;
@@ -123,46 +129,6 @@ const tintShade = (color: string, potency: number) => {
 
   return `rgba(${r}, ${g}, ${b}, 1)`;
 };
-
-// const handleHover = () => {
-//   if (isMouseDown) {
-// switch (pickedColor) {
-//   case "eraser":
-//     if (color !== backgroundColor) setColor(backgroundColor);
-//     break;
-//   case "rainbow":
-//     setColor(randomRGBA());
-//     break;
-//   case "tint":
-//     setColor(tintShade(color, 1));
-//     break;
-//   case "shade":
-//     setColor(tintShade(color, -1));
-//     break;
-//   default:
-//     if (color !== pickedColor) setColor(pickedColor);
-// }
-//   }
-// };
-
-// const handleClick = () => {
-//   switch (pickedColor) {
-//     case "eraser":
-//       if (color !== backgroundColor) setColor(backgroundColor);
-//       break;
-//     case "rainbow":
-//       setColor(randomRGBA());
-//       break;
-//     case "tint":
-//       setColor(tintShade(color, 1));
-//       break;
-//     case "shade":
-//       setColor(tintShade(color, -1));
-//       break;
-//     default:
-//       if (color !== pickedColor) setColor(pickedColor);
-//   }
-// };
 
 // //const randomColor = () => "#" + Math.floor(Math.random() * 16777215).toString(16);
 

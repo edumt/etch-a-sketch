@@ -14,7 +14,6 @@ const Title = styled.h1`
 `;
 
 function App() {
-  const [clearSketchPad, setClearSketchPad] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const dispatch = useDispatch();
 
@@ -28,14 +27,13 @@ function App() {
       <DrawingOptions />
       <div>
         <Title>Etch A Sketch</Title>
-        <SketchPad clearSketchPad={clearSketchPad} isMouseDown={isMouseDown} />
+        <SketchPad isMouseDown={isMouseDown} />
       </div>
       <BoardOptions
         handleResolution={(resolution) => {
-          setClearSketchPad(!clearSketchPad);
+          // setClearSketchPad(!clearSketchPad);
           dispatch(updateGridResolution(resolution)); // to do: move inside BoardOptions
         }}
-        handleClearSketchPad={setClearSketchPad}
       />
     </Center>
   );
