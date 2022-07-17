@@ -7,7 +7,6 @@ const initialBgColor = "rgba(255, 255, 255, 1)";
 export interface BoardState {
   pixels: { color: string }[];
   boardSettings: {
-    gridResolution: number;
     isShowingGrid: boolean;
     size: number;
     backgroundColor: string;
@@ -20,7 +19,6 @@ export interface BoardState {
 const initialState: BoardState = {
   pixels: Array(initialResolution ** 2).fill({ color: initialBgColor }),
   boardSettings: {
-    gridResolution: initialResolution,
     isShowingGrid: false,
     size: 600,
     backgroundColor: initialBgColor,
@@ -33,8 +31,11 @@ export const boardSlice = createSlice({
   initialState,
   reducers: {
     // PIXELS
-    initializePixels: (state, action: PayloadAction<number>) => {
-      state.pixels = Array(action.payload ** 2).fill({ color: "#FFF" });
+    updateGridResolution: (state, action: PayloadAction<number>) => {
+      const resolution = action.payload;
+      state.pixels = Array(resolution ** 2).fill({
+        color: state.boardSettings.backgroundColor,
+      });
     },
     updatePixelColorByIndex: (
       state,
@@ -69,9 +70,6 @@ export const boardSlice = createSlice({
       }
     },
     // BOARD SETTINGS
-    updateGridResolution: (state, action: PayloadAction<number>) => {
-      state.boardSettings.gridResolution = action.payload;
-    },
     toggleShowingGrid: (state) => {
       const { boardSettings } = state;
       boardSettings.isShowingGrid = !boardSettings.isShowingGrid;
@@ -97,7 +95,6 @@ export const boardSlice = createSlice({
 });
 
 export const {
-  initializePixels,
   updatePixelColorByIndex,
   updateGridResolution,
   toggleShowingGrid,

@@ -10,7 +10,8 @@ const SketchPad = ({ isMouseDown }) => {
     return drawingSettings.pickedColor;
   });
   const [resolution, isShowingGrid, size] = useSelector((state) => {
-    const { gridResolution, isShowingGrid, size } = state.board.boardSettings;
+    const { isShowingGrid, size } = state.board.boardSettings;
+    const gridResolution = Math.sqrt(state.board.pixels.length);
     return [gridResolution, isShowingGrid, size];
   });
   const pixels = useSelector(({ board }) => board.pixels);
