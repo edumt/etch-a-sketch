@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setPickedColor } from "../../redux/reducers/drawingOptionsSlice";
+import { setPickedColor } from "../../redux/reducers/boardSlice";
 
 import { Center, ColorInput } from "@mantine/core";
 import Option from "../Option/Option";

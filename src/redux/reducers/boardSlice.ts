@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import BoardOptions from "../../components/BoardOptions/BoardOptions";
 
 export interface BoardState {
   pixels: { color: string }[];
@@ -8,11 +7,15 @@ export interface BoardState {
     gridResolution: number;
     isShowingGrid: boolean;
   };
+  drawingOptions: {
+    pickedColor: string;
+  };
 }
 
 const initialState: BoardState = {
   pixels: Array(16 ** 2).fill({ color: "#FFF" }),
   boardOptions: { gridResolution: 16, isShowingGrid: false },
+  drawingOptions: { pickedColor: "#000" },
 };
 
 export const boardSlice = createSlice({
@@ -36,6 +39,9 @@ export const boardSlice = createSlice({
       const { boardOptions } = state;
       boardOptions.isShowingGrid = !boardOptions.isShowingGrid;
     },
+    setPickedColor: (state, action: PayloadAction<string>) => {
+      state.drawingOptions.pickedColor = action.payload;
+    },
   },
 });
 
@@ -44,6 +50,7 @@ export const {
   setPixelColorByIndex,
   setGridResolution,
   toggleShowingGrid,
+  setPickedColor,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

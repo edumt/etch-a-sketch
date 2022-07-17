@@ -41,9 +41,10 @@ const createGrid = (
 };
 
 const SketchPad = ({ size, backgroundColor, clearSketchPad, isMouseDown }) => {
-  const pickedColor = useSelector(
-    ({ drawingOptions }) => drawingOptions.pickedColor,
-  );
+  const pickedColor = useSelector((state) => {
+    const { drawingOptions } = state.board;
+    return drawingOptions.pickedColor;
+  });
   const [resolution, isShowingGrid] = useSelector((state) => {
     const { boardOptions } = state.board;
     return [boardOptions.gridResolution, boardOptions.isShowingGrid];
