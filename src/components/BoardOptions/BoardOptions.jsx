@@ -8,6 +8,7 @@ import {
   toggleShowingGrid,
   updateBackgroundColor,
   clearSketchPad,
+  updateGridResolution,
 } from "../../redux/reducers/boardSlice";
 
 const Wrapper = styled.div`
@@ -60,7 +61,11 @@ const BoardOptions = ({ handleResolution }) => {
         Toggle Grid Lines
       </Option>
       <Wrapper>
-        <ResolutionSlider handleResolution={handleResolution} />
+        <ResolutionSlider
+          handleResolution={(resolution) =>
+            dispatch(updateGridResolution(resolution))
+          }
+        />
       </Wrapper>
     </Center>
   );

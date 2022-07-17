@@ -4,8 +4,6 @@ import SketchPad from "./components/SketchPad/SketchPad";
 import DrawingOptions from "./components/DrawingOptions/DrawingOptions";
 import BoardOptions from "./components/BoardOptions/BoardOptions";
 import { Center } from "@mantine/core";
-import { useDispatch, useSelector } from "react-redux";
-import { updateGridResolution } from "./redux/reducers/boardSlice";
 
 const Title = styled.h1`
   font-family: Arial, Helvetica, sans-serif;
@@ -15,7 +13,6 @@ const Title = styled.h1`
 
 function App() {
   const [isMouseDown, setIsMouseDown] = useState(false);
-  const dispatch = useDispatch();
 
   return (
     <Center
@@ -29,12 +26,7 @@ function App() {
         <Title>Etch A Sketch</Title>
         <SketchPad isMouseDown={isMouseDown} />
       </div>
-      <BoardOptions
-        handleResolution={(resolution) => {
-          // setClearSketchPad(!clearSketchPad);
-          dispatch(updateGridResolution(resolution)); // to do: move inside BoardOptions
-        }}
-      />
+      <BoardOptions />
     </Center>
   );
 }
