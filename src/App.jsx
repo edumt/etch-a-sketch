@@ -32,7 +32,6 @@ function App() {
       <div>
         <Title>Etch A Sketch</Title>
         <SketchPad
-          size={600}
           backgroundColor={backgroundColor}
           clearSketchPad={clearSketchPad}
           isMouseDown={isMouseDown}

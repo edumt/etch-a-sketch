@@ -1,53 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import styled from "styled-components";
 import { setPixelColorByIndex } from "../../redux/reducers/boardSlice";
 import Pixel from "../Pixel/Pixel";
+import { Wrapper } from "./styled";
 
-const Wrapper = styled.div`
-  height: ${(props) => (props.size ? `${props.size}px` : "600px")};
-  width: ${(props) => (props.size ? `${props.size}px` : "600px")};
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  border: 1px solid #444;
-  margin: 0 16px;
-`;
-
-const createGrid = (
-  size,
-  pixels,
-  resolution,
-  pickedColor,
-  backgroundColor,
-  clearSketchPad,
-  isShowingGrid,
-  isMouseDown,
-  setColor,
-) => {
-  return pixels.map((pixel, index) => (
-    <Pixel
-      key={index}
-      size={size / resolution}
-      pickedColor={pickedColor}
-      backgroundColor={backgroundColor}
-      clearSketchPad={clearSketchPad}
-      showingGrid={isShowingGrid}
-      isMouseDown={isMouseDown}
-      color={pixel.color}
-      setColor={setColor(index)}
-    />
-  ));
-};
-
-const SketchPad = ({ size, backgroundColor, clearSketchPad, isMouseDown }) => {
+const SketchPad = ({ backgroundColor, clearSketchPad, isMouseDown }) => {
   const pickedColor = useSelector((state) => {
     const { drawingSettings } = state.board;
     return drawingSettings.pickedColor;
   });
-  const [resolution, isShowingGrid] = useSelector((state) => {
-    const { boardSettings } = state.board;
-    return [boardSettings.gridResolution, boardSettings.isShowingGrid];
+  const [resolution, isShowingGrid, size] = useSelector((state) => {
+    const { gridResolution, isShowingGrid, size } = state.board.boardSettings;
+    return [gridResolution, isShowingGrid, size];
   });
   const pixels = useSelector(({ board }) => board.pixels);
   const dispatch = useDispatch();
@@ -57,17 +21,19 @@ const SketchPad = ({ size, backgroundColor, clearSketchPad, isMouseDown }) => {
 
   return (
     <Wrapper size={size}>
-      {createGrid(
-        size,
-        pixels,
-        resolution,
-        pickedColor,
-        backgroundColor,
-        clearSketchPad,
-        isShowingGrid,
-        isMouseDown,
-        setColor,
-      )}
+      {pixels.map((pixel, index) => (
+        <Pixel
+          key={index}
+          size={size / resolution}
+          pickedColor={pickedColor}
+          backgroundColor={backgroundColor}
+          clearSketchPad={clearSketchPad}
+          showingGrid={isShowingGrid}
+          isMouseDown={isMouseDown}
+          color={pixel.color}
+          setColor={setColor(index)}
+        />
+      ))}
     </Wrapper>
   );
 };

@@ -8,6 +8,7 @@ export interface BoardState {
   boardSettings: {
     gridResolution: number;
     isShowingGrid: boolean;
+    size: number;
   };
   drawingSettings: {
     pickedColor: string;
@@ -16,7 +17,11 @@ export interface BoardState {
 
 const initialState: BoardState = {
   pixels: Array(initialResolution ** 2).fill({ color: "#FFF" }),
-  boardSettings: { gridResolution: initialResolution, isShowingGrid: false },
+  boardSettings: {
+    gridResolution: initialResolution,
+    isShowingGrid: false,
+    size: 600,
+  },
   drawingSettings: { pickedColor: "#000" },
 };
 
