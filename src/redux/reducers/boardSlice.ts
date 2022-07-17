@@ -3,19 +3,19 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface BoardState {
   pixels: { color: string }[];
-  boardOptions: {
+  boardSettings: {
     gridResolution: number;
     isShowingGrid: boolean;
   };
-  drawingOptions: {
+  drawingSettings: {
     pickedColor: string;
   };
 }
 
 const initialState: BoardState = {
   pixels: Array(16 ** 2).fill({ color: "#FFF" }),
-  boardOptions: { gridResolution: 16, isShowingGrid: false },
-  drawingOptions: { pickedColor: "#000" },
+  boardSettings: { gridResolution: 16, isShowingGrid: false },
+  drawingSettings: { pickedColor: "#000" },
 };
 
 export const boardSlice = createSlice({
@@ -33,14 +33,14 @@ export const boardSlice = createSlice({
       if (state.pixels[index]) state.pixels[index]!.color = color;
     },
     setGridResolution: (state, action: PayloadAction<number>) => {
-      state.boardOptions.gridResolution = action.payload;
+      state.boardSettings.gridResolution = action.payload;
     },
     toggleShowingGrid: (state) => {
-      const { boardOptions } = state;
-      boardOptions.isShowingGrid = !boardOptions.isShowingGrid;
+      const { boardSettings } = state;
+      boardSettings.isShowingGrid = !boardSettings.isShowingGrid;
     },
     setPickedColor: (state, action: PayloadAction<string>) => {
-      state.drawingOptions.pickedColor = action.payload;
+      state.drawingSettings.pickedColor = action.payload;
     },
   },
 });

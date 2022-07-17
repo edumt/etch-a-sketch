@@ -17,8 +17,8 @@ const BoardOptions = ({
   handleClearSketchPad,
 }) => {
   const isShowingGrid = useSelector((state) => {
-    const { boardOptions } = state.board;
-    return boardOptions.isShowingGrid;
+    const { boardSettings } = state.board;
+    return boardSettings.isShowingGrid;
   });
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)",
