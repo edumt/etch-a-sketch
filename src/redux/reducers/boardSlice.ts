@@ -34,14 +34,14 @@ export const boardSlice = createSlice({
       const { color, index } = action.payload;
       if (state.pixels[index]) state.pixels[index]!.color = color;
     },
-    setGridResolution: (state, action: PayloadAction<number>) => {
+    updateGridResolution: (state, action: PayloadAction<number>) => {
       state.boardSettings.gridResolution = action.payload;
     },
     toggleShowingGrid: (state) => {
       const { boardSettings } = state;
       boardSettings.isShowingGrid = !boardSettings.isShowingGrid;
     },
-    setPickedColor: (state, action: PayloadAction<string>) => {
+    updatePickedColor: (state, action: PayloadAction<string>) => {
       state.drawingSettings.pickedColor = action.payload;
     },
   },
@@ -50,9 +50,9 @@ export const boardSlice = createSlice({
 export const {
   initializePixels,
   setPixelColorByIndex,
-  setGridResolution,
+  updateGridResolution,
   toggleShowingGrid,
-  setPickedColor,
+  updatePickedColor,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

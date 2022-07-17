@@ -5,7 +5,7 @@ import DrawingOptions from "./components/DrawingOptions/DrawingOptions";
 import BoardOptions from "./components/BoardOptions/BoardOptions";
 import { Center } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
-import { setGridResolution } from "./redux/reducers/boardSlice";
+import { updateGridResolution } from "./redux/reducers/boardSlice";
 
 const Title = styled.h1`
   font-family: Arial, Helvetica, sans-serif;
@@ -41,7 +41,7 @@ function App() {
       <BoardOptions
         handleResolution={(resolution) => {
           setClearSketchPad(!clearSketchPad);
-          dispatch(setGridResolution(resolution)); // to do: move inside BoardOptions
+          dispatch(updateGridResolution(resolution)); // to do: move inside BoardOptions
         }}
         handleBackgroundColor={setBackgroundColor}
         handleClearSketchPad={setClearSketchPad}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setPickedColor } from "../../redux/reducers/boardSlice";
+import { updatePickedColor } from "../../redux/reducers/boardSlice";
 
 import { Center, ColorInput } from "@mantine/core";
 import Option from "../Option/Option";
@@ -10,7 +10,7 @@ const DrawingOptions = () => {
   const [colorInput, setColorInput] = useState("rgba(0, 0, 0, 1)");
   const dispatch = useDispatch();
 
-  const handleColorPicking = (color) => dispatch(setPickedColor(color));
+  const handleColorPicking = (color) => dispatch(updatePickedColor(color));
 
   const optionsVariant = [];
   for (let i = 0; i < 5; i++) {
