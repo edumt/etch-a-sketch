@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import SketchPad from "./components/SketchPad/SketchPad";
-import DrawingOptions from "./components/DrawingOptions/DrawingOptions";
-import BoardOptions from "./components/BoardOptions/BoardOptions";
+import { updateIsMouseDown } from "./redux/reducers/boardSlice";
+
 import { Center } from "@mantine/core";
+import BoardOptions from "./components/BoardOptions/BoardOptions";
+import DrawingOptions from "./components/DrawingOptions/DrawingOptions";
+import SketchPad from "./components/SketchPad/SketchPad";
 
 const Title = styled.h1`
   font-family: Arial, Helvetica, sans-serif;
@@ -12,18 +14,18 @@ const Title = styled.h1`
 `;
 
 function App() {
-  const [isMouseDown, setIsMouseDown] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <Center
       style={{ height: "100vh", backgroundColor: "snow" }}
-      onMouseDown={() => setIsMouseDown(true)}
-      onMouseUp={() => setIsMouseDown(false)}
+      onMouseDown={() => dispatch(updateIsMouseDown(true))}
+      onMouseUp={() => dispatch(updateIsMouseDown(false))}
     >
       <DrawingOptions />
       <div>
         <Title>Etch A Sketch</Title>
-        <SketchPad isMouseDown={isMouseDown} />
+        <SketchPad />
       </div>
       <BoardOptions />
     </Center>

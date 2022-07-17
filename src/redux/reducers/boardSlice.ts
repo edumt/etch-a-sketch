@@ -14,6 +14,7 @@ export interface BoardState {
   };
   drawingSettings: {
     pickedColor: string;
+    isMouseDown: boolean;
   };
 }
 
@@ -25,7 +26,7 @@ const initialState: BoardState = {
     isShowingGrid: false,
     gridColor: "#898",
   },
-  drawingSettings: { pickedColor: "rgba(0, 0, 0, 1)" },
+  drawingSettings: { pickedColor: "rgba(0, 0, 0, 1)", isMouseDown: false },
 };
 
 export const boardSlice = createSlice({
@@ -46,29 +47,35 @@ export const boardSlice = createSlice({
       const { color, index } = action.payload;
       if (state.pixels[index]) state.pixels[index]!.color = color;
     },
-    drawPixelByIndex: (state, action: PayloadAction<number>) => {
-      const index = action.payload;
+    drawPixelByIndex: (
+      state,
+      action: PayloadAction<{ index: number; onClickFlag: boolean }>,
+    ) => {
+      const { index, onClickFlag } = action.payload;
       if (index > state.pixels.length - 1 || index < 0)
         new Error("Pixel index out of bounds");
-      const pixel = state.pixels[index]!;
-      const { pickedColor } = state.drawingSettings;
 
-      switch (pickedColor) {
-        case "eraser":
-          pixel.color = state.boardSettings.backgroundColor;
-          break;
-        case "rainbow":
-          pixel.color = getRandomRGBA();
-          break;
-        case "tint":
-          pixel.color = tintShade(pickedColor, 1);
-          break;
-        case "shade":
-          pixel.color = tintShade(pickedColor, -1);
-          break;
-        default:
-          pixel.color = pickedColor;
-          break;
+      if (state.drawingSettings.isMouseDown || onClickFlag) {
+        const pixel = state.pixels[index]!;
+        const { pickedColor } = state.drawingSettings;
+
+        switch (pickedColor) {
+          case "eraser":
+            pixel.color = state.boardSettings.backgroundColor;
+            break;
+          case "rainbow":
+            pixel.color = getRandomRGBA();
+            break;
+          case "tint":
+            pixel.color = tintShade(pickedColor, 1);
+            break;
+          case "shade":
+            pixel.color = tintShade(pickedColor, -1);
+            break;
+          default:
+            pixel.color = pickedColor;
+            break;
+        }
       }
     },
     // BOARD SETTINGS
@@ -93,6 +100,9 @@ export const boardSlice = createSlice({
     updatePickedColor: (state, action: PayloadAction<string>) => {
       state.drawingSettings.pickedColor = action.payload;
     },
+    updateIsMouseDown: (state, action: PayloadAction<boolean>) => {
+      state.drawingSettings.isMouseDown = action.payload;
+    },
   },
 });
 
@@ -104,6 +114,7 @@ export const {
   clearSketchPad,
   updatePickedColor,
   drawPixelByIndex,
+  updateIsMouseDown,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

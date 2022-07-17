@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
 import * as S from "./styled";
 
-const Pixel = ({
-  size,
-  color,
-  isShowingGrid,
-  gridColor,
-  isMouseDown,
-  setColor,
-}) => {
+const Pixel = ({ size, color, isShowingGrid, gridColor, drawPixel }) => {
   const preventDragHandler = (e) => {
     e.preventDefault();
   };
@@ -17,9 +10,9 @@ const Pixel = ({
     <S.Pixel
       size={size}
       color={color}
-      onMouseOver={isMouseDown ? setColor : () => {}} // maybe use onDrag
-      onMouseDown={setColor}
-      onDragStart={preventDragHandler}
+      onMouseOver={() => drawPixel(false)}
+      onMouseDown={() => drawPixel(true)}
+      onDragStart={preventDragHandler} // maybe use onDrag to draw too
       showingGrid={isShowingGrid}
       gridColor={gridColor}
     />
