@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updatePickedColor } from "../../redux/reducers/boardSlice";
 
-import { Center, ColorInput } from "@mantine/core";
+import { Center, ColorInput, ButtonVariant } from "@mantine/core";
 import Option from "../Option/Option";
 
 const DrawingOptions = () => {
@@ -10,9 +10,10 @@ const DrawingOptions = () => {
   const [colorInput, setColorInput] = useState("rgba(0, 0, 0, 1)");
   const dispatch = useDispatch();
 
-  const handleColorPicking = (color) => dispatch(updatePickedColor(color));
+  const handleColorPicking = (color: string) =>
+    dispatch(updatePickedColor(color));
 
-  const optionsVariant = [];
+  const optionsVariant: ButtonVariant[] = [];
   for (let i = 0; i < 5; i++) {
     if (i === activeOption) optionsVariant[i] = "filled";
     else optionsVariant[i] = "outline";
@@ -36,7 +37,7 @@ const DrawingOptions = () => {
         }}
       />
       <Option
-        variant={optionsVariant[0]}
+        variant={optionsVariant[0]!}
         handleClick={() => {
           setActiveOption(0);
           handleColorPicking(colorInput);
@@ -45,8 +46,7 @@ const DrawingOptions = () => {
         Picked Color
       </Option>
       <Option
-        variant={optionsVariant[1]}
-        value={1}
+        variant={optionsVariant[1]!}
         handleClick={() => {
           setActiveOption(1);
           handleColorPicking("eraser");
@@ -55,7 +55,7 @@ const DrawingOptions = () => {
         Eraser
       </Option>
       <Option
-        variant={optionsVariant[2]}
+        variant={optionsVariant[2]!}
         handleClick={() => {
           setActiveOption(2);
           handleColorPicking("rainbow");
@@ -64,7 +64,7 @@ const DrawingOptions = () => {
         Rainbow Mode
       </Option>
       <Option
-        variant={optionsVariant[4]}
+        variant={optionsVariant[4]!}
         handleClick={() => {
           setActiveOption(4);
           handleColorPicking("tint");
@@ -73,7 +73,7 @@ const DrawingOptions = () => {
         Tint
       </Option>
       <Option
-        variant={optionsVariant[3]}
+        variant={optionsVariant[3]!}
         handleClick={() => {
           setActiveOption(3);
           handleColorPicking("shade");

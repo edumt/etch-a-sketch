@@ -133,6 +133,7 @@ const verifyLimit = (rgb: number): number => {
   return rgb;
 };
 const tintShade = (color: string, potency: number) => {
+  // to do: fix function
   let [r, g, b] = getRGBA(color).map((item: number) =>
     verifyLimit(item + potency * 25),
   );

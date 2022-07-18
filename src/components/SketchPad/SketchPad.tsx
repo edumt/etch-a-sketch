@@ -1,20 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
-
 import { drawPixelByIndex } from "../../redux/reducers/boardSlice";
+import { RootState } from "../../redux/store";
+
 import Pixel from "../Pixel/Pixel";
 import { Wrapper } from "./styled";
 
 const SketchPad = () => {
-  const pickedColor = useSelector((state) => {
-    const { drawingSettings } = state.board;
-    return drawingSettings.pickedColor;
-  });
-  const [resolution, size, isShowingGrid, gridColor] = useSelector((state) => {
-    const { isShowingGrid, gridColor, size } = state.board.boardSettings;
-    const gridResolution = Math.sqrt(state.board.pixels.length);
-    return [gridResolution, size, isShowingGrid, gridColor];
-  });
-  const pixels = useSelector((state) => state.board.pixels);
+  const resolution = useSelector((state: RootState) =>
+    Math.sqrt(state.board.pixels.length),
+  );
+  const size = useSelector(
+    (state: RootState) => state.board.boardSettings.size,
+  );
+  const isShowingGrid = useSelector(
+    (state: RootState) => state.board.boardSettings.isShowingGrid,
+  );
+  const gridColor = useSelector(
+    (state: RootState) => state.board.boardSettings.gridColor,
+  );
+  const pixels = useSelector((state: RootState) => state.board.pixels);
   const dispatch = useDispatch();
 
   return (

@@ -1,8 +1,23 @@
-import { useState, useEffect } from "react";
+import { SyntheticEvent } from "react";
+
 import * as S from "./styled";
 
-const Pixel = ({ size, color, isShowingGrid, gridColor, drawPixel }) => {
-  const preventDragHandler = (e) => {
+interface Props {
+  size: number;
+  color: string;
+  isShowingGrid: boolean;
+  gridColor: string;
+  drawPixel: (onClickFlag: boolean) => void;
+}
+
+const Pixel: React.FC<Props> = ({
+  size,
+  color,
+  isShowingGrid,
+  gridColor,
+  drawPixel,
+}) => {
+  const preventDragHandler = (e: SyntheticEvent) => {
     e.preventDefault();
   };
 

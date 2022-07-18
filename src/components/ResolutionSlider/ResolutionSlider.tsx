@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { Slider } from "@mantine/core";
 
-const ResolutionSlider = ({ handleResolution }) => {
+interface Props {
+  handleResolution: (resolution: number) => void;
+}
+
+const ResolutionSlider: React.FC<Props> = ({ handleResolution }) => {
   const minValue = 8;
   const maxValue = 48;
   const marks = [

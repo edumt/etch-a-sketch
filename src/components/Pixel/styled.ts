@@ -1,15 +1,23 @@
 import styled from "styled-components";
 
-export const Pixel = styled.div.attrs((props) => ({
+interface Props {
+  size: number;
+  color: string;
+  gridColor: string;
+  showingGrid: boolean;
+}
+
+export const Pixel = styled.div.attrs((props: Props) => ({
+  // to do: remember why I used .attrs lol
   style: {
-    height: props.size || 75,
-    width: props.size || 75,
+    height: props.size,
+    width: props.size,
     borderWidth: 0.1,
     backgroundColor: props.color,
     borderColor: props.gridColor,
     borderStyle: props.showingGrid ? "solid" : "none",
   },
-}))`
+}))<Props>`
   box-sizing: border-box;
   transition: ease;
 

@@ -3,7 +3,7 @@ import { Center, ColorInput } from "@mantine/core";
 import styled from "styled-components";
 import ResolutionSlider from "../ResolutionSlider/ResolutionSlider";
 import Option from "../Option/Option";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   toggleShowingGrid,
   updateBackgroundColor,
@@ -16,11 +16,7 @@ const Wrapper = styled.div`
   margin-left: 20px;
 `;
 
-const BoardOptions = ({ handleResolution }) => {
-  const isShowingGrid = useSelector((state) => {
-    const { boardSettings } = state.board;
-    return boardSettings.isShowingGrid;
-  });
+const BoardOptions = () => {
   const [backgroundColor, setBackgroundColor] = useState(
     "rgba(255, 255, 255, 1)",
   );
@@ -34,10 +30,10 @@ const BoardOptions = ({ handleResolution }) => {
       }}
     >
       <ColorInput
-        style={{ margin: "5px 0" }}
+        styles={{ root: { margin: "5px 0" } }}
         value={backgroundColor}
         format="rgba"
-        onChange={(event) => setBackgroundColor(event)}
+        onChange={(color) => setBackgroundColor(color)}
       />
       <Option
         variant="light"
@@ -62,7 +58,7 @@ const BoardOptions = ({ handleResolution }) => {
       </Option>
       <Wrapper>
         <ResolutionSlider
-          handleResolution={(resolution) =>
+          handleResolution={(resolution: number) =>
             dispatch(updateGridResolution(resolution))
           }
         />
