@@ -7,7 +7,7 @@ interface Props {
 
 const ResolutionSlider: React.FC<Props> = ({ handleResolution }) => {
   const minValue = 8;
-  const maxValue = 48;
+  const maxValue = 64;
   const marks = [
     { value: minValue, label: minValue },
     { value: maxValue, label: maxValue },

@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { drawPixelByIndex } from "../../redux/reducers/boardSlice";
 import { RootState } from "../../redux/store";
@@ -19,6 +20,11 @@ const SketchPad = () => {
     (state: RootState) => state.board.boardSettings.gridColor,
   );
   const pixels = useSelector((state: RootState) => state.board.pixels);
+  const drawPixel = useCallback(
+    (index: number, onClickFlag: boolean) =>
+      dispatch(drawPixelByIndex({ index, onClickFlag })),
+    [],
+  );
   const dispatch = useDispatch();
 
   return (
@@ -26,11 +32,10 @@ const SketchPad = () => {
       {pixels.map((pixel, index) => (
         <Pixel
           key={index}
+          index={index}
           size={size / resolution}
           color={pixel.color}
-          drawPixel={(onClickFlag) =>
-            dispatch(drawPixelByIndex({ index, onClickFlag }))
-          }
+          drawPixel={drawPixel}
           isShowingGrid={isShowingGrid}
           gridColor={gridColor}
         />
