@@ -1,20 +1,16 @@
 import { useState } from "react";
-import { Center, ColorInput } from "@mantine/core";
-import styled from "styled-components";
-import ResolutionSlider from "../ResolutionSlider/ResolutionSlider";
-import Option from "../Option/Option";
 import { useDispatch } from "react-redux";
 import {
+  clearSketchPad,
   toggleShowingGrid,
   updateBackgroundColor,
-  clearSketchPad,
   updateGridResolution,
 } from "../../redux/reducers/boardSlice";
 
-const Wrapper = styled.div`
-  width: 100%;
-  margin-left: 20px;
-`;
+import { Center, ColorInput } from "@mantine/core";
+import Option from "../Option/Option";
+import ResolutionSlider from "../ResolutionSlider/ResolutionSlider";
+import { Wrapper } from "./styled";
 
 const BoardOptions = () => {
   const [backgroundColor, setBackgroundColor] = useState(
@@ -34,6 +30,7 @@ const BoardOptions = () => {
         value={backgroundColor}
         format="rgba"
         onChange={(color) => setBackgroundColor(color)}
+        // onChange issue: https://github.com/mantinedev/mantine/issues/1249
       />
       <Option
         variant="light"
