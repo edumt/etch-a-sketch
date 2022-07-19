@@ -67,10 +67,10 @@ export const boardSlice = createSlice({
             pixel.color = getRandomRGBA();
             break;
           case "tint":
-            pixel.color = tintShade(pickedColor, 1);
+            pixel.color = tintShade(pixel.color, 1);
             break;
           case "shade":
-            pixel.color = tintShade(pickedColor, -1);
+            pixel.color = tintShade(pixel.color, -1);
             break;
           default:
             pixel.color = pickedColor;
