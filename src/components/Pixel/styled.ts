@@ -19,11 +19,11 @@ export const Pixel = styled.div.attrs((props: Props) => ({
   },
 }))<Props>`
   box-sizing: border-box;
-  transition: ease;
+  /* transition: ease; */
 
   &:hover {
     border-style: dashed !important;
-    transition: background-color ease 0.15s;
+    /* transition: background-color ease 0.15s; */
     //box-shadow: inset 0 0 10px #fff;
   }
 `;
