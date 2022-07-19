@@ -40,6 +40,7 @@ const DrawingOptions = () => {
       />
       {options.map((option, idx) => (
         <Option
+          key={idx}
           variant={idx === activeOption ? "filled" : "outline"}
           handleClick={() => {
             setActiveOption(idx);
