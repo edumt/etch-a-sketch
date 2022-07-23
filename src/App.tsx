@@ -11,7 +11,6 @@ function App() {
 
   // to do: update README, add stack details
   // to do: improve layout/css
-  // to do: maybe debounce the grid resolution update
   // to do: add simple footer with social links
   // to do: work around mantine's colorinput onChange bug
   // to do: try to improve grid lines thickness
