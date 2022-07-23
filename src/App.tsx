@@ -10,8 +10,6 @@ function App() {
   const dispatch = useDispatch();
 
   // to do: update README, add stack details
-  // to do: remove unused files, e.g. CRA files
-  // to do: remove unused actions from store
   // to do: improve layout/css
   // to do: maybe debounce the grid resolution update
   // to do: add simple footer with social links
