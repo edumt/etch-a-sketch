@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Slider } from "@mantine/core";
 
 interface Props {
@@ -12,23 +12,27 @@ const ResolutionSlider: React.FC<Props> = ({ handleResolution }) => {
     { value: minValue, label: minValue },
     { value: maxValue, label: maxValue },
   ];
-  const [value, setValue] = useState(16);
+  const [resolution, setResolution] = useState(16);
+
+  useEffect(() => {
+    // debouncing resolution change
+    const id = setTimeout(() => handleResolution(resolution), 250);
+    return () => clearTimeout(id);
+  }, [resolution]);
 
   return (
     //temp solution, should style it better
     <div style={{ width: "100%", textAlign: "center" }}>
-      <span>Grid resolution: {`${value} x ${value}`}</span>
+      <span>Grid resolution: {`${resolution} x ${resolution}`}</span>
       <Slider
         marks={marks}
-        style={{ width: "90%", height: 30, marginBottom: 16 }}
-        value={value}
+        styles={{ root: { width: "90%", height: 30, marginBottom: 16 } }}
+        value={resolution}
         min={minValue}
         max={maxValue}
         step={1}
-        label={(value) => value}
-        onChange={(e) => setValue(e)}
-        onMouseUp={() => handleResolution(value)}
-        //labelAlwaysOn
+        label={(resolution) => resolution}
+        onChange={setResolution}
       />
     </div>
   );

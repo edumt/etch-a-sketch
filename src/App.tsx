@@ -9,6 +9,15 @@ import MainContent from "./components/MainContent/MainContent";
 function App() {
   const dispatch = useDispatch();
 
+  // to do: update README, add stack details
+  // to do: improve layout/css
+  // to do: add simple footer with social links
+  // to do: work around mantine's colorinput onChange bug
+  // to do: try to improve grid lines thickness
+  // to do: add more options:
+  // - high contrast grid line,
+  // - maybe draw many pixels at once,
+  // - maybe tint/shade potency,
   return (
     <Center
       style={{ height: "100vh", backgroundColor: "snow" }}

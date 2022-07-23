@@ -40,13 +40,6 @@ export const boardSlice = createSlice({
         color: state.boardSettings.backgroundColor,
       });
     },
-    updatePixelColorByIndex: (
-      state,
-      action: PayloadAction<{ index: number; color: string }>,
-    ) => {
-      const { color, index } = action.payload;
-      if (state.pixels[index]) state.pixels[index]!.color = color;
-    },
     drawPixelByIndex: (
       state,
       action: PayloadAction<{ index: number; onClickFlag: boolean }>,
@@ -107,7 +100,6 @@ export const boardSlice = createSlice({
 });
 
 export const {
-  updatePixelColorByIndex,
   updateGridResolution,
   toggleShowingGrid,
   updateBackgroundColor,
